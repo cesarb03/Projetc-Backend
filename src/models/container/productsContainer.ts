@@ -117,4 +117,4 @@ class productsContainer {
     }
 }
 
-export default new productsContainer('./src/db/products.txt')
+export default new productsContainer('./src/data/products.txt')

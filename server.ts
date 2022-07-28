@@ -1,8 +1,7 @@
 import express from 'express'
-import routes from './routes/routes'
+import routes from './src/routes/routes'
 // import auth from './middlewares/auth'
-import wrongRoute from './middlewares/wrongRoute'
-
+import wrongRoute from './src/middlewares/wrongRoute'
 import dotenv from 'dotenv'
 
 dotenv.config()
