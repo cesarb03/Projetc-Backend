@@ -1,5 +1,8 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 export default {
     mongoDB: {
-      URI: 'mongodb+srv://cesarb03:q1w2e3@project-backend.lwnru.mongodb.net/?retryWrites=true&w=majority',
+      URI: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
     }
 }

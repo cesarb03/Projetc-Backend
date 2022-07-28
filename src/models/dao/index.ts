@@ -1,7 +1,3 @@
-import dotenv from 'dotenv'
-
-dotenv.config()
-
 let productDao: any
 
 switch (process.env.DB_PROVIDER) {
