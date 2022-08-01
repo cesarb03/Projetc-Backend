@@ -9,7 +9,7 @@ router.get("/products", getAll) //Trae todo los productos.
 router.get("/products/:id", getById) //Trae producto por ID.
 router.post("/products", auth, addProduct) //Añade un nuevo producto (POST).
 router.put("/products/:id", auth, updateProductById) //Actualiza producto por ID (PUT).
-router.delete("/products/:id", auth, deleteProductById) //Elimina producto por ID (DELETE).
+router.delete("/products/:id", deleteProductById) //Elimina producto por ID (DELETE).
 
 router.post('/cart', cartCreate)//Crea un nuevo cart.
 router.delete('/cart/:id', cartDelete)//Elimina cart by ID

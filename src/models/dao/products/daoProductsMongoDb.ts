@@ -42,7 +42,7 @@ class ProductsDAOMongoDB extends MongoDBContainer {
     }
   }
 
-  public async updateProduct(id: any, newData: any): Promise<any> {
+  public async updateProductById(id: any, newData: any): Promise<any> {
     try {
       const updatedData = await this.model.updateOne({ _id: id }, newData)
 
@@ -57,7 +57,7 @@ class ProductsDAOMongoDB extends MongoDBContainer {
   }
   }
 
-  public async deleteProduct(id: any): Promise<any> {
+  public async deleteProductById(id: any): Promise<any> {
     try {
       const deletedData = await this.model.deleteOne({ _id: id})
 

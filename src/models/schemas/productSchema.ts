@@ -15,7 +15,7 @@ const ProductSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    minlength: 6,
+    minlength: 3,
     maxlength: 200,
   },
   photoURL: {

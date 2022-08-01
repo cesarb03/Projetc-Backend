@@ -1,6 +1,5 @@
 import express from 'express'
 import routes from './routes/routes'
-// import auth from './middlewares/auth'
 import wrongRoute from './middlewares/wrongRoute'
 import dotenv from 'dotenv'
 
@@ -11,7 +10,6 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// app.use(auth)  
 app.use('/api', routes)
 app.use(wrongRoute)//Middleware: checks not implemented route.
 
