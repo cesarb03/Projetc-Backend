@@ -1,20 +1,20 @@
 [
   {
-    "name": "ProbandoDb1",
-    "price": "333",
+    "name": "actualizadooooooooo",
+    "price": "111",
     "photoURL": "https://img.fotocommunity.com/atardeceres-1b2829bd-e28f-47e5-9a55-8d9988f8e184.jpg?height=1080",
-    "stock": "3333",
+    "stock": "123",
     "description": "admindsdadasd",
     "id": 2,
-    "timestamp": "1/8/2022 15:37:04"
+    "timestamp": "1/8/2022 23:04:16"
   },
   {
-    "name": "actualizado2",
-    "price": "333",
+    "name": "prueba322222222222",
+    "price": "111",
     "photoURL": "https://img.fotocommunity.com/atardeceres-1b2829bd-e28f-47e5-9a55-8d9988f8e184.jpg?height=1080",
-    "stock": "3333",
+    "stock": "123",
     "description": "admindsdadasd",
     "id": 3,
-    "timestamp": "1/8/2022 16:25:59"
+    "timestamp": "1/8/2022 23:29:51"
   }
 ]

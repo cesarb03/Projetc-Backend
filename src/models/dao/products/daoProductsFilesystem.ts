@@ -65,7 +65,7 @@ class ProductsDAOFilesystem extends FileContainer {
         const fileData: storedProduct[] = await this.readFile()
 
         return (
-            fileData.find((object: storedProduct) => object.id === id) ?? {
+            fileData.find((object: storedProduct) => object.id === Number(id)) ?? {
             error: 'Product not found'
             }
         )
@@ -80,7 +80,7 @@ class ProductsDAOFilesystem extends FileContainer {
         const fileData: storedProduct[] = await this.readFile()
         const newFileData: storedProduct[] = fileData.map(
             (object: storedProduct) =>
-            object.id === id ? { ...object, ...product } : object
+            object.id === Number(id) ? { ...object, ...product } : object
         )
 
         await this.writeFile(newFileData)
@@ -93,16 +93,14 @@ class ProductsDAOFilesystem extends FileContainer {
         try {
         const fileData: storedProduct[] = await this.readFile()
         const newFileData: storedProduct[] = fileData.filter(
-            (object: storedProduct) => object.id !== id
+            (object: storedProduct) => object.id !== Number(id)
         )
 
         if (fileData.length === newFileData.length) {
-            const msg = `There is NO product with id= ${id}`
-            return msg
+            return `There is NO product with id= ${id}`
         } else {
             await this.writeFile(newFileData)
-            const msg = `Product ${id} deleted`
-            return msg
+            return `Product ${id} deleted`
         } 
         } catch (err: any) {
         console.log('Method deleteById: ', err)

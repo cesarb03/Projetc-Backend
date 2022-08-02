@@ -3,22 +3,13 @@ import { cartDao } from '../models/dao/index'
 
 export const cartCreate = async (req: Request, res: Response) => {
     const cartId = await cartDao.createNewCart()
-
-    if (typeof cartId !== 'number') {
-        return res.status(500).json({
-            error: -1,
-            msg: 'Error creating cart',
-            cartId
-        })
-    } else {
         res.json(cartId)
-    }
 }
 
 export const cartDelete = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const cart = await cartDao.cartDeleteById(Number(id))
+    const cart = await cartDao.cartDeleteById(id)
 
     if (cart instanceof Error) {
         return res.status(500).json({
@@ -47,7 +38,7 @@ export const cartDelete = async (req: Request, res: Response) => {
 export const getProductsByCartId = async (req: Request, res: Response) => {
     const { id } = req.params
 
-    const cart = await cartDao.getProductsByCartId(Number(id))
+    const cart = await cartDao.getProductsByCartId(id)
     if (cart instanceof Error) {
         return res.status(500).json({
             error: -1,
@@ -62,7 +53,7 @@ export const addToCartById = async (req: Request, res: Response) => {
     const { id } = req.params
     const product = req.body
 
-    const cart = await cartDao.addProductsById(Number(id), product)
+    const cart = await cartDao.addProductsById(id, product)
 
     if (cart instanceof Error) {
         return res.status(500).json({
@@ -77,7 +68,7 @@ export const addToCartById = async (req: Request, res: Response) => {
 export const deleteProductByCartId = async (req: Request, res: Response) => {
     const { id, id_prod } = req.params
 
-    const cart = await cartDao.deleteProductByCartId(Number(id), Number(id_prod))
+    const cart = await cartDao.deleteProductByCartId(id, id_prod)
 
     if (cart instanceof Error) {
         return res.status(500).json({

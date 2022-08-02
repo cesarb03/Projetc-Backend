@@ -87,7 +87,7 @@ public cartDeleteById = async (id: number): Promise<number | Error> => {
         if (carts.length === 0 || typeof carts === 'undefined') {
             return -1
         } else {
-            const newCart = carts.filter((object: cart) => object.cartId !== id)
+            const newCart = carts.filter((object: cart) => object.cartId !== Number(id))
 
             if (newCart.length === carts.length) {
                 return -2
@@ -105,7 +105,7 @@ public cartDeleteById = async (id: number): Promise<number | Error> => {
 public getProductsByCartId = async (id: number): Promise<storedProduct[] | Error> => {
     try {
         const carts = await this.readCartFile()
-        const foundCart = carts.find((object: cart) => object.cartId === id)
+        const foundCart = carts.find((object: cart) => object.cartId === Number(id))
 
         if (typeof foundCart !== 'undefined') {
             const cartProducts = foundCart.products
@@ -127,21 +127,21 @@ public addProductsById = async (id: number, productId: storedProduct): Promise<v
     try {
         const nProductId = Number(productId.id)
         const carts = await this.readCartFile()//Almaceno todos los carts
-        const foundCart = carts.find((object: cart) => object.cartId === id)//Selecciono el cart target
+        const foundCart = carts.find((object: cart) => object.cartId === Number(id))//Selecciono el cart target
 
         const products = await this.readProductsFile()//Almaceno todos los productos de la tienda
         const productToAdd = products.filter((object: storedProduct) => {//Selecciono el producto elegido
-            if (object.id === nProductId) {
+            if (object.id === Number(productId.id)) {
                 return object
             }
         })
         if (productToAdd.length === 0) {
-            return new Error(`There is no such product with id= ${nProductId}`)
+            return new Error(`There is no such product with id= ${Number(productId.id)}`)
         } else {
             if (typeof foundCart !== 'undefined' && typeof productToAdd !== 'undefined') {
                 const newProducts = [...foundCart.products, ...productToAdd]//Actualizo el nuevo array de productos añadidos al cart.
                 const newCart = carts.map((object: cart) =>
-                    object.cartId === id ? { ...object, products: newProducts } : object//Almaceno dicho array al cart target.
+                    object.cartId === Number(id) ? { ...object, products: newProducts } : object//Almaceno dicho array al cart target.
                 )
                 await this.writeFile(newCart)
                 return productToAdd
@@ -156,15 +156,15 @@ public addProductsById = async (id: number, productId: storedProduct): Promise<v
 public deleteProductByCartId = async (id: number, productId: number): Promise<void | Error> => {
     try {
         const carts = await this.readCartFile()//Almaceno todos los productos de la tienda
-        const foundCart = carts.find((object: cart) => object.cartId === id)//Selecciono el cart target
+        const foundCart = carts.find((object: cart) => object.cartId === Number(id))//Selecciono el cart target
         if (typeof foundCart !== 'undefined') {
             const newProducts = foundCart.products.filter(
-                (object) => object.id !== productId
+                (object) => object.id !== Number(productId)
             )
             if (newProducts.length === foundCart.products.length) {
-                return new Error(`Product id=${productId} not found in cart id=${id}.`)
+                return new Error(`Product id=${productId} not found in cart id=${Number(id)}.`)
             } else {
-                const newCart = carts.map((object) => object.cartId === id ? { ...object, products: newProducts } : object)
+                const newCart = carts.map((object) => object.cartId === Number(id) ? { ...object, products: newProducts } : object)
                 await this.writeFile(newCart)
             }
         } else {

@@ -38,7 +38,7 @@ class CartDAOFirebase extends FirebaseContainer {
     }
   }
 
-  async deleteCartById(id: any): Promise<any | void> {
+  async cartDeleteById(id: any): Promise<any | void> {
     try {
       const selectedCart = await this.checkIfCartExists(id)
 

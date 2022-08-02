@@ -6,7 +6,7 @@ class CartsDAOMongoDB extends MongoDBContainer {
     super(cartModel)
   }
 
-  async createNewCart() {
+  async createNewCart() { 
     try {
       const cart = new this.model({})
       const { _id } = await cart.save()
@@ -17,7 +17,7 @@ class CartsDAOMongoDB extends MongoDBContainer {
     }
   }
 
-  async deleteCartById(id: any) {
+  async cartDeleteById(id: any) {
     try {
       const cart: any = await this.model.findOne({ _id: id })
 
