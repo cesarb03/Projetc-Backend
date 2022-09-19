@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const CartSchema = new mongoose.Schema({
   products: [
@@ -16,6 +16,6 @@ const CartSchema = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
-})
+});
 
-export default mongoose.model('carts', CartSchema)
+export default mongoose.model('carts', CartSchema);

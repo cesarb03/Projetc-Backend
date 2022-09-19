@@ -1,6 +1,6 @@
-import { product } from './product'
+import { product } from './product';
 
 export interface storedProduct extends product {
-  id: number
-  timestamp: string
+  id: number;
+  timestamp: string;
 }

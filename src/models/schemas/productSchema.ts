@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const ProductSchema = new mongoose.Schema({
   name: {
@@ -34,6 +34,6 @@ const ProductSchema = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
-})
+});
 
-export default mongoose.model('products', ProductSchema)
+export default mongoose.model('products', ProductSchema);

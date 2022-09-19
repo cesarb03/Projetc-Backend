@@ -1,5 +1,5 @@
-import serviceAccountCredentials from '../../db/serviceAccountKey.json'
-import admin from 'firebase-admin'
+import serviceAccountCredentials from '../../db/serviceAccountKey.json';
+import admin from 'firebase-admin';
 // import config from '../../db/config'
 
 // admin.initializeApp({
@@ -8,15 +8,15 @@ import admin from 'firebase-admin'
 
 // const db = admin.firestore()
 
-const serviceAccount = serviceAccountCredentials as admin.ServiceAccount
+const serviceAccount = serviceAccountCredentials as admin.ServiceAccount;
 
 class FirebaseContainer {
-  collection: string
+  collection: string;
 
   constructor(collection: string) {
     // this.collection = db.collection(collection)
-    this.collection = collection
-    this.connect()
+    this.collection = collection;
+    this.connect();
   }
 
   connect() {
@@ -24,14 +24,14 @@ class FirebaseContainer {
       if (admin.apps.length === 0) {
         admin.initializeApp({
           credential: admin.credential.cert(serviceAccount),
-        })
+        });
 
-        console.log('connected to firebase')
+        console.log('connected to firebase');
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 }
 
-export default FirebaseContainer
+export default FirebaseContainer;

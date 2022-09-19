@@ -1,4 +1,3 @@
 export interface error {
-    error: string
-  }
-  
+  error: string;
+}

@@ -1,109 +1,109 @@
-import MongoDBContainer from '../../container/mongoDbContainer'
-import cartModel from '../../schemas/cartSchema'
+import MongoDBContainer from '../../container/mongoDbContainer';
+import cartModel from '../../schemas/cartSchema';
 
 class CartsDAOMongoDB extends MongoDBContainer {
   constructor() {
-    super(cartModel)
+    super(cartModel);
   }
 
-  async createNewCart() { 
+  async createNewCart() {
     try {
-      const cart = new this.model({})
-      const { _id } = await cart.save()
+      const cart = new this.model({});
+      const { _id } = await cart.save();
 
-      return _id
+      return _id;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   async cartDeleteById(id: any) {
     try {
-      const cart: any = await this.model.findOne({ _id: id })
+      const cart: any = await this.model.findOne({ _id: id });
 
       if (cart === null) {
-        return { error: 'Cart not found' }
+        return { error: 'Cart not found' };
       } else {
-        await cart.remove()
+        await cart.remove();
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   async getProductsByCartId(id: any) {
     try {
-      const cart: any = await this.model.findOne({ _id: id })
+      const cart: any = await this.model.findOne({ _id: id });
 
       if (cart === null) {
-        return { error: 'Cart not found' }
+        return { error: 'Cart not found' };
       } else {
-        const foundItemsInCart = cart.products
-        return foundItemsInCart
+        const foundItemsInCart = cart.products;
+        return foundItemsInCart;
       }
-      
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
-  async addProductsById(id: any, product: {id: any}) {
+  async addProductsById(id: any, product: { id: any }) {
     try {
-      const cart: any = await this.model.findOne({ _id: id })
+      const cart: any = await this.model.findOne({ _id: id });
 
       if (cart === null) {
-        return { error: 'Cart not found' }
+        return { error: 'Cart not found' };
       } else {
         const newCartProduct = await this.model.updateOne(
           { _id: id },
           {
             $push: {
               products: {
-                product: product
-              }
-            }
+                product: product,
+              },
+            },
           }
-        )
+        );
         if (newCartProduct.modifiedCount === 0) {
-          return { error: 'Product not added.' }
+          return { error: 'Product not added.' };
         } else {
-          return { msg: 'Product added.' }
+          return { msg: 'Product added.' };
         }
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   async deleteProductByCartId(id: any, id_prod: any) {
     try {
-      const cart: any = await this.model.findOne({ _id: id })
+      const cart: any = await this.model.findOne({ _id: id });
 
       if (cart === null) {
-        return { error: 'Cart not found' }
+        return { error: 'Cart not found' };
       } else {
         const deleteCartProduct = await this.model.updateOne(
           {
-            _id: id
+            _id: id,
           },
           {
             $pull: {
               products: {
-                product: {id: id_prod}
-              }
-            }
-          })
-      console.log(deleteCartProduct)
-      if (deleteCartProduct.modifiedCount === 0) {
-        return { error: 'Product not found.' }
-      } else {
-          return { msg: 'Product deleted.' }
+                product: { id: id_prod },
+              },
+            },
+          }
+        );
+        console.log(deleteCartProduct);
+        if (deleteCartProduct.modifiedCount === 0) {
+          return { error: 'Product not found.' };
+        } else {
+          return { msg: 'Product deleted.' };
+        }
       }
-    }
-    } catch (err) { 
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
   }
 }
 
-export default new CartsDAOMongoDB()
+export default new CartsDAOMongoDB();
