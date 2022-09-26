@@ -274,12 +274,11 @@ var CartDAOFilesystem = /** @class */ (function (_super) {
         }); };
         //Añade un producto al carrito target.
         _this.addProductsById = function (id, productId) { return __awaiter(_this, void 0, void 0, function () {
-            var nProductId, carts, foundCart, products, productToAdd, newProducts_1, newCart, err_9;
+            var carts, foundCart, products, productToAdd, newProducts_1, newCart, err_9;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 6, , 7]);
-                        nProductId = Number(productId.id);
                         return [4 /*yield*/, this.readCartFile()];
                     case 1:
                         carts = _a.sent();

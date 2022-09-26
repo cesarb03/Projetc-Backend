@@ -5,16 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
 var CartSchema = new mongoose_1.default.Schema({
-    products: [
-        {
-            product: { type: Object, ref: 'products' },
-        },
-    ],
-    quantity: {
-        type: Number,
-        required: true,
-        default: 1,
-    },
+    products: [{ type: Object, required: true, ref: 'products' }],
+    user: { type: String, required: true },
     timestamp: {
         type: Number,
         required: true,

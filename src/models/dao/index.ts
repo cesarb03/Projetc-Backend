@@ -10,11 +10,6 @@ switch (process.env.DB_PROVIDER) {
     import('./cart/daoCartMongoDb').then((dao) => (cartDao = dao.default));
     break;
 
-  case 'firebase':
-    import('./products/daoProductsFirebase').then((dao) => (productDao = dao.default));
-    import('./cart/daoCartFirebase').then((dao) => (cartDao = dao.default));
-    break;
-
   case 'fs':
     import('./products/daoProductsFilesystem').then((dao) => (productDao = dao.default));
     import('./cart/daoCartFilesystem').then((dao) => (cartDao = dao.default));

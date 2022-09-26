@@ -125,7 +125,6 @@ class CartDAOFilesystem extends FileContainer {
   //Añade un producto al carrito target.
   public addProductsById = async (id: number, productId: storedProduct): Promise<void | storedProduct[] | Error> => {
     try {
-      const nProductId = Number(productId.id);
       const carts = await this.readCartFile(); //Almaceno todos los carts
       const foundCart = carts.find((object: cart) => object.cartId === Number(id)); //Selecciono el cart target
 

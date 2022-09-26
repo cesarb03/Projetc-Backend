@@ -18,7 +18,7 @@ var ProductSchema = new mongoose_1.default.Schema({
     },
     description: {
         type: String,
-        required: true,
+        required: false,
         minlength: 3,
         maxlength: 200,
     },
@@ -30,12 +30,12 @@ var ProductSchema = new mongoose_1.default.Schema({
     },
     stock: {
         type: Number,
-        required: true,
+        required: false,
         min: 0,
     },
     timestamp: {
         type: Number,
-        required: true,
+        required: false,
         default: Date.now,
     },
 });

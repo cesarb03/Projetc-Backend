@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { productDao } from '../models/dao/index';
+import Logger from '../utils/logger';
 
 export const getAll = async (req: Request, res: Response) => {
   const products = await productDao.getAll();
-
-  res.json(products);
+  Logger.info(products);
+  return products;
 };
 
 export const getById = async (req: Request, res: Response) => {
@@ -15,10 +16,14 @@ export const getById = async (req: Request, res: Response) => {
 };
 
 export const addProduct = async (req: Request, res: Response) => {
-  const product = req.body;
-
-  const storedProduct = await productDao.addProduct(product);
-  res.json(storedProduct);
+  try {
+    const product = req.body;
+    await productDao.addProduct(product);
+    Logger.info('Product added');
+    res.redirect('/api/addProdForm');
+  } catch (error) {
+    Logger.error(error);
+  }
 };
 
 export const updateProductById = async (req: Request, res: Response) => {

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import config from '../../db/config';
+import Logger from '../../utils/logger';
 
 class MongoDBContainer {
   model: mongoose.Model<any, {}, {}, {}>;
@@ -12,9 +13,9 @@ class MongoDBContainer {
   private async connect() {
     try {
       await mongoose.connect(config.mongoDB.URI);
-      console.log('connected to mongoDB Atlas');
+      Logger.info('connected to mongoDB Atlas');
     } catch (err) {
-      console.log(err);
+      Logger.error(err);
     }
   }
 }

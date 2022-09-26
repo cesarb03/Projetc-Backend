@@ -35,129 +35,147 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProductByCartId = exports.addToCartById = exports.getProductsByCartId = exports.cartDelete = exports.cartCreate = void 0;
+exports.cartOrder = exports.deleteProductByCartId = exports.addToCartById = exports.getProductsByCartId = exports.cartDelete = exports.cartCreate = void 0;
 var index_1 = require("../models/dao/index");
-var cartCreate = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var cartId;
+var messaging_1 = __importDefault(require("../utils/messaging"));
+var logger_1 = __importDefault(require("../utils/logger"));
+var nodemailer_1 = __importDefault(require("../utils/nodemailer"));
+//Esta funcion se ejecutará con el hook post declarado en el esquema del user
+var cartCreate = function (user) { return __awaiter(void 0, void 0, void 0, function () {
+    var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, index_1.cartDao.createNewCart()];
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, index_1.cartDao.createNewCart(user)];
             case 1:
-                cartId = _a.sent();
-                res.json(cartId);
-                return [2 /*return*/];
+                _a.sent();
+                logger_1.default.info("Cart created for user ".concat(user.email));
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                logger_1.default.error(error_1);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.cartCreate = cartCreate;
 var cartDelete = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, cart;
+    var user, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                id = req.params.id;
-                return [4 /*yield*/, index_1.cartDao.cartDeleteById(id)];
+                _a.trys.push([0, 2, , 3]);
+                user = req.user;
+                return [4 /*yield*/, index_1.cartDao.cartDeleteById(user)];
             case 1:
-                cart = _a.sent();
-                if (cart instanceof Error) {
-                    return [2 /*return*/, res.status(500).json({
-                            error: -1,
-                            msg: cart.message,
-                        })];
-                }
-                else {
-                    if (cart === -1) {
-                        return [2 /*return*/, res.status(500).json({
-                                error: -1,
-                                msg: 'Cart file is empty!',
-                            })];
-                    }
-                    else {
-                        if (cart === -2) {
-                            return [2 /*return*/, res.status(500).json({
-                                    error: -2,
-                                    msg: "There is no cart with id= ".concat(id),
-                                })];
-                        }
-                        else {
-                            res.json("Cart id: ".concat(id, " deleted."));
-                        }
-                    }
-                }
-                return [2 /*return*/];
+                _a.sent();
+                res.redirect('/api/cart');
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                logger_1.default.error(error_2);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.cartDelete = cartDelete;
 var getProductsByCartId = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, cart;
+    var user, cartProducts, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                id = req.params.id;
-                return [4 /*yield*/, index_1.cartDao.getProductsByCartId(id)];
+                _a.trys.push([0, 2, , 3]);
+                user = req.user;
+                return [4 /*yield*/, index_1.cartDao.getProductsByCartId(user)];
             case 1:
-                cart = _a.sent();
-                if (cart instanceof Error) {
-                    return [2 /*return*/, res.status(500).json({
-                            error: -1,
-                            msg: cart.message,
-                        })];
-                }
-                else {
-                    res.json(cart);
-                }
-                return [2 /*return*/];
+                cartProducts = _a.sent();
+                res.render('cart', { products: cartProducts, user: user });
+                return [3 /*break*/, 3];
+            case 2:
+                error_3 = _a.sent();
+                logger_1.default.error(error_3);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.getProductsByCartId = getProductsByCartId;
 var addToCartById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, product, cart;
+    var product, user, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                id = req.params.id;
+                _a.trys.push([0, 2, , 3]);
                 product = req.body;
-                return [4 /*yield*/, index_1.cartDao.addProductsById(id, product)];
+                user = req.user;
+                return [4 /*yield*/, index_1.cartDao.addProductsById(product, user)];
             case 1:
-                cart = _a.sent();
-                if (cart instanceof Error) {
-                    return [2 /*return*/, res.status(500).json({
-                            error: -1,
-                            msg: cart.message,
-                        })];
-                }
-                else {
-                    res.json(cart);
-                }
-                return [2 /*return*/];
+                _a.sent();
+                res.redirect('/api/cart');
+                return [3 /*break*/, 3];
+            case 2:
+                error_4 = _a.sent();
+                logger_1.default.error(error_4);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.addToCartById = addToCartById;
 var deleteProductByCartId = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, id, id_prod, cart;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var product, user, error_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.params, id = _a.id, id_prod = _a.id_prod;
-                return [4 /*yield*/, index_1.cartDao.deleteProductByCartId(id, id_prod)];
+                _a.trys.push([0, 2, , 3]);
+                product = req.body;
+                user = req.user;
+                return [4 /*yield*/, index_1.cartDao.deleteProductByCartId(user, product)];
             case 1:
-                cart = _b.sent();
-                if (cart instanceof Error) {
-                    return [2 /*return*/, res.status(500).json({
-                            error: -1,
-                            msg: cart.message,
-                        })];
-                }
-                else {
-                    res.json(cart);
-                }
-                return [2 /*return*/];
+                _a.sent();
+                res.redirect('/api/cart');
+                return [3 /*break*/, 3];
+            case 2:
+                error_5 = _a.sent();
+                logger_1.default.error(error_5);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.deleteProductByCartId = deleteProductByCartId;
+var cartOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user, cartProducts, error_6;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                user = req.user;
+                return [4 /*yield*/, index_1.cartDao.getProductsByCartId(user)];
+            case 1:
+                cartProducts = _a.sent();
+                return [4 /*yield*/, index_1.cartDao.deleteCartById(user)];
+            case 2:
+                _a.sent();
+                nodemailer_1.default.newOrder(user, cartProducts);
+                messaging_1.default.newSMS(user);
+                messaging_1.default.newWhatsapp(user);
+                res.redirect('/');
+                return [3 /*break*/, 4];
+            case 3:
+                error_6 = _a.sent();
+                logger_1.default.error(error_6);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.cartOrder = cartOrder;
 //# sourceMappingURL=cartControllers.js.map

@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
 var config_1 = __importDefault(require("../../db/config"));
+var logger_1 = __importDefault(require("../../utils/logger"));
 var MongoDBContainer = /** @class */ (function () {
     function MongoDBContainer(model) {
         this.model = model;
@@ -56,11 +57,11 @@ var MongoDBContainer = /** @class */ (function () {
                         return [4 /*yield*/, mongoose_1.default.connect(config_1.default.mongoDB.URI)];
                     case 1:
                         _a.sent();
-                        console.log('connected to mongoDB Atlas');
+                        logger_1.default.info('connected to mongoDB Atlas');
                         return [3 /*break*/, 3];
                     case 2:
                         err_1 = _a.sent();
-                        console.log(err_1);
+                        logger_1.default.error(err_1);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }

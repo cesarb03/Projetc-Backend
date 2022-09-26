@@ -54,6 +54,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var logger_1 = __importDefault(require("../../../utils/logger"));
 var mongoDbContainer_1 = __importDefault(require("../../container/mongoDbContainer"));
 var cartSchema_1 = __importDefault(require("../../schemas/cartSchema"));
 var CartsDAOMongoDB = /** @class */ (function (_super) {
@@ -61,61 +62,56 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
     function CartsDAOMongoDB() {
         return _super.call(this, cartSchema_1.default) || this;
     }
-    CartsDAOMongoDB.prototype.createNewCart = function () {
+    CartsDAOMongoDB.prototype.createNewCart = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var cart, _id, err_1;
+            var cart;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        cart = new this.model({});
+                        cart = new this.model({ user: user.id, products: [] });
                         return [4 /*yield*/, cart.save()];
                     case 1:
-                        _id = (_a.sent())._id;
-                        return [2 /*return*/, _id];
-                    case 2:
-                        err_1 = _a.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    CartsDAOMongoDB.prototype.cartDeleteById = function (id) {
+    CartsDAOMongoDB.prototype.cartDeleteById = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var cart, err_2;
+            var cart, cartProductsDelete;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 5, , 6]);
-                        return [4 /*yield*/, this.model.findOne({ _id: id })];
+                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
                     case 1:
                         cart = _a.sent();
                         if (!(cart === null)) return [3 /*break*/, 2];
                         return [2 /*return*/, { error: 'Cart not found' }];
-                    case 2: return [4 /*yield*/, cart.remove()];
+                    case 2: return [4 /*yield*/, this.model.updateOne({ _id: cart._id }, {
+                            $set: {
+                                products: [],
+                            },
+                        })];
                     case 3:
-                        _a.sent();
+                        cartProductsDelete = _a.sent();
+                        if (cartProductsDelete.modifiedCount === 0) {
+                            logger_1.default.error('Products not deleted from cart');
+                        }
+                        else {
+                            logger_1.default.info('Products deleted from cart');
+                        }
                         _a.label = 4;
-                    case 4: return [3 /*break*/, 6];
-                    case 5:
-                        err_2 = _a.sent();
-                        console.log(err_2);
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
-    CartsDAOMongoDB.prototype.getProductsByCartId = function (id) {
+    CartsDAOMongoDB.prototype.getProductsByCartId = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var cart, foundItemsInCart, err_3;
+            var cart, foundItemsInCart;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.model.findOne({ _id: id })];
+                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
                     case 1:
                         cart = _a.sent();
                         if (cart === null) {
@@ -123,93 +119,68 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
                         }
                         else {
                             foundItemsInCart = cart.products;
+                            logger_1.default.info("Cart: ".concat(foundItemsInCart));
                             return [2 /*return*/, foundItemsInCart];
                         }
-                        return [3 /*break*/, 3];
-                    case 2:
-                        err_3 = _a.sent();
-                        console.log(err_3);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    CartsDAOMongoDB.prototype.addProductsById = function (id, product) {
+    CartsDAOMongoDB.prototype.addProductsById = function (product, user) {
         return __awaiter(this, void 0, void 0, function () {
-            var cart, newCartProduct, err_4;
+            var cart, newCartProduct;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 5, , 6]);
-                        return [4 /*yield*/, this.model.findOne({ _id: id })];
+                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
                     case 1:
                         cart = _a.sent();
                         if (!(cart === null)) return [3 /*break*/, 2];
                         return [2 /*return*/, { error: 'Cart not found' }];
-                    case 2: return [4 /*yield*/, this.model.updateOne({ _id: id }, {
+                    case 2: return [4 /*yield*/, this.model.updateOne({ _id: cart._id }, {
                             $push: {
-                                products: {
-                                    product: product,
-                                },
+                                products: product,
                             },
                         })];
                     case 3:
                         newCartProduct = _a.sent();
                         if (newCartProduct.modifiedCount === 0) {
-                            return [2 /*return*/, { error: 'Product not added.' }];
+                            logger_1.default.error('Product not added to cart');
                         }
                         else {
-                            return [2 /*return*/, { msg: 'Product added.' }];
+                            logger_1.default.info('Product added to cart');
                         }
                         _a.label = 4;
-                    case 4: return [3 /*break*/, 6];
-                    case 5:
-                        err_4 = _a.sent();
-                        console.log(err_4);
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
-    CartsDAOMongoDB.prototype.deleteProductByCartId = function (id, id_prod) {
+    CartsDAOMongoDB.prototype.deleteProductByCartId = function (user, product) {
         return __awaiter(this, void 0, void 0, function () {
-            var cart, deleteCartProduct, err_5;
+            var cart, deleteCartProduct;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 5, , 6]);
-                        return [4 /*yield*/, this.model.findOne({ _id: id })];
+                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
                     case 1:
                         cart = _a.sent();
                         if (!(cart === null)) return [3 /*break*/, 2];
                         return [2 /*return*/, { error: 'Cart not found' }];
-                    case 2: return [4 /*yield*/, this.model.updateOne({
-                            _id: id,
-                        }, {
+                    case 2: return [4 /*yield*/, this.model.updateOne({ _id: cart._id }, {
                             $pull: {
-                                products: {
-                                    product: { id: id_prod },
-                                },
+                                products: { id: product.id },
                             },
                         })];
                     case 3:
                         deleteCartProduct = _a.sent();
-                        console.log(deleteCartProduct);
                         if (deleteCartProduct.modifiedCount === 0) {
-                            return [2 /*return*/, { error: 'Product not found.' }];
+                            logger_1.default.error('Product not deleted from cart');
                         }
                         else {
-                            return [2 /*return*/, { msg: 'Product deleted.' }];
+                            logger_1.default.info('Product deleted from cart');
                         }
                         _a.label = 4;
-                    case 4: return [3 /*break*/, 6];
-                    case 5:
-                        err_5 = _a.sent();
-                        console.log(err_5);
-                        return [3 /*break*/, 6];
-                    case 6: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

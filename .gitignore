@@ -1,6 +1,7 @@
 #Ignorar carpetas
 
 node_modules
+dist
 
 #Ignorar arvhivos
 
