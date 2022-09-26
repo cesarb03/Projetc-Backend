@@ -60,7 +60,7 @@ export const cartOrder = async (req: Request, res: Response) => {
   try {
     const user = req.user;
     const cartProducts = await cartDao.getProductsByCartId(user);
-    await cartDao.deleteCartById(user);
+    await cartDao.cartDeleteById(user);
     MailSender.newOrder(user, cartProducts);
     MessageService.newSMS(user);
     MessageService.newWhatsapp(user);

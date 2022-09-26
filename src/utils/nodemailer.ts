@@ -21,7 +21,7 @@ class MailSender {
   async newRegister(user: any) {
     try {
       await this.transporter.sendMail({
-        from: 'E-commerce GG',
+        from: 'E-commerce CB',
         to: process.env.GMAIL_MAIL,
         subject: `New registered user`,
         html: ` <p>Name: ${user.name}</p> 
@@ -39,7 +39,7 @@ class MailSender {
   async newOrder(user: any, products: any) {
     try {
       await this.transporter.sendMail({
-        from: 'E-commerce GG',
+        from: 'E-commerce CB',
         to: process.env.GMAIL_MAIL,
         subject: `New order from ${user.name}`,
         html: `

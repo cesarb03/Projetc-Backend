@@ -161,7 +161,7 @@ var cartOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 return [4 /*yield*/, index_1.cartDao.getProductsByCartId(user)];
             case 1:
                 cartProducts = _a.sent();
-                return [4 /*yield*/, index_1.cartDao.deleteCartById(user)];
+                return [4 /*yield*/, index_1.cartDao.cartDeleteById(user)];
             case 2:
                 _a.sent();
                 nodemailer_1.default.newOrder(user, cartProducts);

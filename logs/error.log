@@ -1,6 +1,0 @@
-{
-  message: 'An error has occurred when sending the user registration email: cesar_b_03@outlook.com',
-  level: 'error',
-  timestamp: '2022-09-26T04:08:00.979Z'
-}
-{ level: 'error', timestamp: '2022-09-26T04:16:22.349Z' }

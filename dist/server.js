@@ -80,7 +80,7 @@ else {
     serverExpress.on('error', function (err) { return logger_1.default.error("An error has ocurred when starting: ".concat(err)); });
 }
 //MIDDLEWARES
-app.use(express_1.default.static(path_1.default.join(__dirname, './uploads')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '../uploads')));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 // CONFIGURACION MOTOR DE PLANTILLAS EJS
