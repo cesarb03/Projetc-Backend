@@ -4,7 +4,10 @@ import Logger from './logger';
 
 dotenv.config();
 
-const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
+const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
+
+const client = twilio(ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 class MessageService {
   async newSMS(user: any) {
