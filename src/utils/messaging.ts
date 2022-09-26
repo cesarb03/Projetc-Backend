@@ -4,8 +4,8 @@ import Logger from './logger';
 
 dotenv.config();
 
-const ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
-const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
+const ACCOUNT_SID : string = "ACbe09d6f706466199d5e9a25a465e6d56"
+const TWILIO_AUTH_TOKEN : string = "54fb8ddd13041b843604403e677e6b65"
 
 const client = twilio(ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
