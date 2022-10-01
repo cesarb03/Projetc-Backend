@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import passport from 'passport';
-
 import { renderLogin, login, renderFailedLogin } from '../../controllers/sessionControllers';
 
 export const sessionLogin = Router();

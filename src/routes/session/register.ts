@@ -9,6 +9,7 @@ import {
   uploadSuccess,
 } from '../../controllers/sessionControllers';
 import { upload } from '../../utils/multer';
+import Logger from '../../utils/logger';
 
 export const sessionSignup = Router();
 
@@ -47,7 +48,7 @@ sessionSignup.post(
         return next(error);
       }
     } catch (err) {
-      console.log('Method update: ', err);
+      Logger.error(`Error trying to update users avatar: ${err}`);
     }
 
     next();

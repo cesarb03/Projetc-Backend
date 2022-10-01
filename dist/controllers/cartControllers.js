@@ -40,18 +40,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cartOrder = exports.deleteProductByCartId = exports.addToCartById = exports.getProductsByCartId = exports.cartDelete = exports.cartCreate = void 0;
-var index_1 = require("../models/dao/index");
+var cartService_1 = require("../services/cartService");
 var messaging_1 = __importDefault(require("../utils/messaging"));
 var logger_1 = __importDefault(require("../utils/logger"));
 var nodemailer_1 = __importDefault(require("../utils/nodemailer"));
-//Esta funcion se ejecutará con el hook post declarado en el esquema del user
+//Esta funcion se ejecutará con el hook post declarado en el esquema del user, cuando se crea un user
 var cartCreate = function (user) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, index_1.cartDao.createNewCart(user)];
+                return [4 /*yield*/, cartService_1.cartService.createNewCart(user)];
             case 1:
                 _a.sent();
                 logger_1.default.info("Cart created for user ".concat(user.email));
@@ -72,14 +72,14 @@ var cartDelete = function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 user = req.user;
-                return [4 /*yield*/, index_1.cartDao.cartDeleteById(user)];
+                return [4 /*yield*/, cartService_1.cartService.cartDeleteById(user)];
             case 1:
                 _a.sent();
                 res.redirect('/api/cart');
                 return [3 /*break*/, 3];
             case 2:
                 error_2 = _a.sent();
-                logger_1.default.error(error_2);
+                logger_1.default.error("Error in cartDeleteById method: ".concat(error_2));
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -93,7 +93,7 @@ var getProductsByCartId = function (req, res) { return __awaiter(void 0, void 0,
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 user = req.user;
-                return [4 /*yield*/, index_1.cartDao.getProductsByCartId(user)];
+                return [4 /*yield*/, cartService_1.cartService.getProductsByCartId(user)];
             case 1:
                 cartProducts = _a.sent();
                 res.render('cart', { products: cartProducts, user: user });
@@ -115,7 +115,7 @@ var addToCartById = function (req, res) { return __awaiter(void 0, void 0, void 
                 _a.trys.push([0, 2, , 3]);
                 product = req.body;
                 user = req.user;
-                return [4 /*yield*/, index_1.cartDao.addProductsById(product, user)];
+                return [4 /*yield*/, cartService_1.cartService.addProductsById(product, user)];
             case 1:
                 _a.sent();
                 res.redirect('/api/cart');
@@ -137,7 +137,7 @@ var deleteProductByCartId = function (req, res) { return __awaiter(void 0, void 
                 _a.trys.push([0, 2, , 3]);
                 product = req.body;
                 user = req.user;
-                return [4 /*yield*/, index_1.cartDao.deleteProductByCartId(user, product)];
+                return [4 /*yield*/, cartService_1.cartService.deleteProductByCartId(user, product)];
             case 1:
                 _a.sent();
                 res.redirect('/api/cart');
@@ -156,24 +156,22 @@ var cartOrder = function (req, res) { return __awaiter(void 0, void 0, void 0, f
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
+                _a.trys.push([0, 2, , 3]);
                 user = req.user;
-                return [4 /*yield*/, index_1.cartDao.getProductsByCartId(user)];
+                return [4 /*yield*/, cartService_1.cartService.getProductsByCartId(user)];
             case 1:
                 cartProducts = _a.sent();
-                return [4 /*yield*/, index_1.cartDao.cartDeleteById(user)];
-            case 2:
-                _a.sent();
+                // await cartDao.cartDeleteById(user);
                 nodemailer_1.default.newOrder(user, cartProducts);
                 messaging_1.default.newSMS(user);
                 messaging_1.default.newWhatsapp(user);
                 res.redirect('/');
-                return [3 /*break*/, 4];
-            case 3:
+                return [3 /*break*/, 3];
+            case 2:
                 error_6 = _a.sent();
                 logger_1.default.error(error_6);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); };

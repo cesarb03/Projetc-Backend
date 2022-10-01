@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import { cartDao } from '../models/dao/index';
+import { cartService } from '../services/cartService';
 import MessageService from '../utils/messaging';
 import Logger from '../utils/logger';
 import MailSender from '../utils/nodemailer';
 
-//Esta funcion se ejecutará con el hook post declarado en el esquema del user
+// Esta funcion se ejecutará con el hook post declarado en el esquema del user, cuando se crea un user
 export const cartCreate = async (user: any) => {
   try {
-    await cartDao.createNewCart(user);
+    await cartService.createNewCart(user);
     Logger.info(`Cart created for user ${user.email}`);
   } catch (error) {
     Logger.error(error);
@@ -17,17 +17,17 @@ export const cartCreate = async (user: any) => {
 export const cartDelete = async (req: Request, res: Response) => {
   try {
     const user = req.user;
-    await cartDao.cartDeleteById(user);
+    await cartService.cartDeleteById(user);
     res.redirect('/api/cart');
   } catch (error) {
-    Logger.error(error);
+    Logger.error(`Error in cartDeleteById method: ${error}`);
   }
 };
 
 export const getProductsByCartId = async (req: Request, res: Response) => {
   try {
     const user = req.user;
-    const cartProducts = await cartDao.getProductsByCartId(user);
+    const cartProducts = await cartService.getProductsByCartId(user);
     res.render('cart', { products: cartProducts, user: user });
   } catch (error) {
     Logger.error(error);
@@ -38,7 +38,7 @@ export const addToCartById = async (req: Request, res: Response) => {
   try {
     const product = req.body;
     const user = req.user;
-    await cartDao.addProductsById(product, user);
+    await cartService.addProductsById(product, user);
     res.redirect('/api/cart');
   } catch (error) {
     Logger.error(error);
@@ -49,7 +49,7 @@ export const deleteProductByCartId = async (req: Request, res: Response) => {
   try {
     const product = req.body;
     const user = req.user;
-    await cartDao.deleteProductByCartId(user, product);
+    await cartService.deleteProductByCartId(user, product);
     res.redirect('/api/cart');
   } catch (error) {
     Logger.error(error);
@@ -59,8 +59,8 @@ export const deleteProductByCartId = async (req: Request, res: Response) => {
 export const cartOrder = async (req: Request, res: Response) => {
   try {
     const user = req.user;
-    const cartProducts = await cartDao.getProductsByCartId(user);
-    await cartDao.cartDeleteById(user);
+    const cartProducts = await cartService.getProductsByCartId(user);
+    // await cartDao.cartDeleteById(user);
     MailSender.newOrder(user, cartProducts);
     MessageService.newSMS(user);
     MessageService.newWhatsapp(user);

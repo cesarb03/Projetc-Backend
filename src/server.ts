@@ -1,11 +1,10 @@
 import express from 'express';
 import session from 'express-session';
-import { sessionLogin, sessionSignup, sessionLogout, cartRouter, productsRouter, info } from './routes';
-//Server Config
+import indexRouter from './routes/index';
+// Server Config
 import config from './db/config';
 import MongoStore from 'connect-mongo';
 import path from 'path';
-import wrongRoute from './middlewares/wrongRoute';
 import dotenv from 'dotenv';
 import cluster from 'cluster';
 import os from 'os';
@@ -13,9 +12,6 @@ import Logger from './utils/logger';
 import passport from 'passport';
 import { passportLoad } from './utils/passport';
 import flash from 'connect-flash';
-import auth from './middlewares/auth';
-import { getAll } from './controllers/productsControllers';
-import compression from 'compression';
 
 declare module 'express-session' {
   export interface SessionData {
@@ -26,10 +22,10 @@ declare module 'express-session' {
   }
 }
 
-//DOTENV
+// DOTENV
 dotenv.config();
 const port = process.env.PORT || 8080;
-//SERVER
+// SERVER
 const app = express();
 const cpus = os.cpus();
 
@@ -51,7 +47,7 @@ if (process.argv[3] === 'cluster' && cluster.isPrimary) {
   serverExpress.on('error', (err) => Logger.error(`An error has ocurred when starting: ${err}`));
 }
 
-//MIDDLEWARES
+// MIDDLEWARES
 app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -77,23 +73,11 @@ app.use(
   })
 );
 
-//PASSPORT
+// PASSPORT
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 passportLoad(passport);
 
-//RUTAS
-
-app.use('/login', sessionLogin);
-app.use('/logout', sessionLogout);
-app.use('/signup', sessionSignup);
-app.use('/api', productsRouter, cartRouter);
-
-app.get('/', auth, async (req, res: express.Response) => {
-  const products = await getAll(req, res);
-  res.render('home', { logged: true, user: req.user, products: products });
-});
-
-app.use('/info', info);
-app.use('/infoCompressed', compression(), info);
+// ROUTES
+app.use('/', indexRouter);

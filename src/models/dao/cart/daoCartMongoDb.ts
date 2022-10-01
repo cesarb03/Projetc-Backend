@@ -8,7 +8,7 @@ class CartsDAOMongoDB extends MongoDBContainer {
   }
 
   async createNewCart(user: any) {
-    const cart = new this.model({ user: user.id, products: [] });
+    const cart = new this.model({ user: { id: user.id, email: user.email }, products: [] });
     await cart.save();
   }
 
@@ -35,19 +35,18 @@ class CartsDAOMongoDB extends MongoDBContainer {
   }
 
   async getProductsByCartId(user: any) {
-    const cart: any = await this.model.findOne({ user: user.id });
+    const cart: any = await this.model.findOne().populate({ path: 'user.id' });
 
     if (cart === null) {
       return { error: 'Cart not found' };
     } else {
       const foundItemsInCart = cart.products;
-      Logger.info(`Cart: ${foundItemsInCart}`);
       return foundItemsInCart;
     }
   }
 
   async addProductsById(product: any, user: any) {
-    const cart: any = await this.model.findOne({ user: user.id });
+    const cart: any = await this.model.findOne().populate({ path: 'user.id' });
 
     if (cart === null) {
       return { error: 'Cart not found' };
@@ -69,7 +68,7 @@ class CartsDAOMongoDB extends MongoDBContainer {
   }
 
   async deleteProductByCartId(user: any, product: any) {
-    const cart: any = await this.model.findOne({ user: user.id });
+    const cart: any = await this.model.findOne().populate({ path: 'user.id' });
 
     if (cart === null) {
       return { error: 'Cart not found' };

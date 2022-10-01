@@ -68,7 +68,7 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        cart = new this.model({ user: user.id, products: [] });
+                        cart = new this.model({ user: { id: user.id, email: user.email }, products: [] });
                         return [4 /*yield*/, cart.save()];
                     case 1:
                         _a.sent();
@@ -111,7 +111,7 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
             var cart, foundItemsInCart;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
+                    case 0: return [4 /*yield*/, this.model.findOne().populate({ path: 'user.id' })];
                     case 1:
                         cart = _a.sent();
                         if (cart === null) {
@@ -119,7 +119,6 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
                         }
                         else {
                             foundItemsInCart = cart.products;
-                            logger_1.default.info("Cart: ".concat(foundItemsInCart));
                             return [2 /*return*/, foundItemsInCart];
                         }
                         return [2 /*return*/];
@@ -132,7 +131,7 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
             var cart, newCartProduct;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
+                    case 0: return [4 /*yield*/, this.model.findOne().populate({ path: 'user.id' })];
                     case 1:
                         cart = _a.sent();
                         if (!(cart === null)) return [3 /*break*/, 2];
@@ -161,7 +160,7 @@ var CartsDAOMongoDB = /** @class */ (function (_super) {
             var cart, deleteCartProduct;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.model.findOne({ user: user.id })];
+                    case 0: return [4 /*yield*/, this.model.findOne().populate({ path: 'user.id' })];
                     case 1:
                         cart = _a.sent();
                         if (!(cart === null)) return [3 /*break*/, 2];

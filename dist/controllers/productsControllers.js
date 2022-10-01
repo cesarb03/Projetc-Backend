@@ -40,16 +40,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProductById = exports.updateProductById = exports.addProduct = exports.getById = exports.getAll = void 0;
-var index_1 = require("../models/dao/index");
 var logger_1 = __importDefault(require("../utils/logger"));
+var productService_1 = require("../services/productService");
 var getAll = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var products;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, index_1.productDao.getAll()];
+            case 0: return [4 /*yield*/, productService_1.productService.getAll()];
             case 1:
                 products = _a.sent();
-                logger_1.default.info(products);
                 return [2 /*return*/, products];
         }
     });
@@ -61,7 +60,7 @@ var getById = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
         switch (_a.label) {
             case 0:
                 id = req.params.id;
-                return [4 /*yield*/, index_1.productDao.getById(id)];
+                return [4 /*yield*/, productService_1.productService.getById(id)];
             case 1:
                 body = _a.sent();
                 res.json(body);
@@ -77,7 +76,7 @@ var addProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 product = req.body;
-                return [4 /*yield*/, index_1.productDao.addProduct(product)];
+                return [4 /*yield*/, productService_1.productService.addProduct(product)];
             case 1:
                 _a.sent();
                 logger_1.default.info('Product added');
@@ -99,7 +98,7 @@ var updateProductById = function (req, res) { return __awaiter(void 0, void 0, v
             case 0:
                 id = req.params.id;
                 product = req.body;
-                return [4 /*yield*/, index_1.productDao.updateProductById(id, product)];
+                return [4 /*yield*/, productService_1.productService.updateProductById(id, product)];
             case 1:
                 _a.sent();
                 res.json({ msg: "Product ".concat(id, " updated.") });
@@ -114,7 +113,7 @@ var deleteProductById = function (req, res) { return __awaiter(void 0, void 0, v
         switch (_a.label) {
             case 0:
                 id = req.params.id;
-                return [4 /*yield*/, index_1.productDao.deleteProductById(id)];
+                return [4 /*yield*/, productService_1.productService.deleteProductById(id)];
             case 1:
                 deletedProduct = _a.sent();
                 res.json({

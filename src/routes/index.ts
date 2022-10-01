@@ -1,7 +1,23 @@
-export { sessionLogin } from '../routes/session/login';
-export { sessionLogout } from '../routes/session/logout';
-export { sessionSignup } from '../routes/session/register';
-export { home } from '../routes/home';
-export { info } from '../routes/info';
-export { productsRouter } from '../routes/products';
-export { cartRouter } from '../routes/cart';
+import { Router } from 'express';
+import { sessionLogin } from './session/login';
+import { sessionLogout } from './session/logout';
+import { sessionSignup } from './session/register';
+import productsRouter from './products';
+import cartRouter from './cart';
+import home from './home';
+import auth from '../middlewares/auth';
+
+const indexRouter = Router();
+
+//RUTAS
+indexRouter.use('/login', sessionLogin);
+indexRouter.use('/logout', sessionLogout);
+indexRouter.use('/signup', sessionSignup);
+indexRouter.use('/home', home);
+indexRouter.use('/api', productsRouter, cartRouter);
+
+indexRouter.use('/', auth, async (req, res) => {
+  return res.redirect('/home');
+});
+
+export default indexRouter;

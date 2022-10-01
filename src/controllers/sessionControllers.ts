@@ -1,13 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import MailSender from '../utils/nodemailer';
-import { getAll } from './productsControllers';
 import Logger from '../utils/logger';
 
-//LOGIN
+// LOGIN
 export const login = async (req: Request, res: Response, next: NextFunction) => {
-  const products = await getAll(req, res);
-  res.status(200).render('home', { user: req.user, products: products });
-  next();
+  try {
+    if (req.isAuthenticated()) next();
+  } catch (err) {
+    Logger.error(`Error when login method in SessionControllers, ${err}`);
+  }
 };
 
 export const renderLogin = (req: Request, res: Response) => {
@@ -18,7 +19,7 @@ export const renderLogin = (req: Request, res: Response) => {
   }
 };
 
-//LOGOUT
+// LOGOUT
 export const logout = (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     const user = req.user;
@@ -30,7 +31,7 @@ export const logout = (req: Request, res: Response) => {
   }
 };
 
-//SIGNUP
+// SIGNUP
 export const renderSignUp = async (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     res.redirect('/');
@@ -39,29 +40,28 @@ export const renderSignUp = async (req: Request, res: Response) => {
   }
 };
 
-export const signUp = async (req: Request, res: Response, next: NextFunction) => {
+export const signUp = async (req: Request, res: Response) => {
   const user = req.user;
   res.status(201).render('createdUser', { user: user });
   MailSender.newRegister(user);
-  next();
 };
 
-//FAILED SIGNUP
+// FAILED SIGNUP
 export const renderFailedSignup = async (req: Request, res: Response) => {
   res.status(409).render('failedSignup', { message: req.flash('error')[0] });
 };
 
-//FAILED LOGIN
+// FAILED LOGIN
 export const renderFailedLogin = (req: Request, res: Response) => {
   res.status(401).render('failedLogin', { message: req.flash('error')[0] });
 };
 
-//HOME
+// HOME
 export const renderHome = (req: Request, res: Response) => {
   res.render('home', { user: req.user });
 };
 
-//UPLOAD
+// UPLOAD
 export const renderUpload = (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     res.render('upload');
@@ -70,15 +70,18 @@ export const renderUpload = (req: Request, res: Response) => {
   }
 };
 
-//UPLOAD SUCCESS
-export const uploadSuccess = async (req: Request, res: Response, next: NextFunction) => {
+// UPLOAD SUCCESS
+export const uploadSuccess = async (req: Request, res: Response) => {
   res.status(201).render('uploadSuccess');
-  next();
 };
 
-//ADD_PRODUCTS_FORM
+// ADD_PRODUCTS_FORM
 export const renderAddProdForm = async (req: Request, res: Response) => {
   Logger.info(`${req.method} request to '${req.originalUrl}' route: Rendering add product form page.`);
-  const user = req.user;
-  res.status(200).render('add_products', { user: user });
+  try {
+    const user = req.user;
+    res.status(200).render('add_products', { user: user });
+  } catch (err) {
+    Logger.error(err);
+  }
 };

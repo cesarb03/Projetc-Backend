@@ -3,7 +3,7 @@ import productModel from '../../schemas/productSchema';
 
 class ProductsDAOMongoDB extends MongoDBContainer {
   constructor() {
-    super(productModel); //productModel = mongoose.model('products', ProductSchema)
+    super(productModel); // productModel = mongoose.model('products', ProductSchema)
   }
 
   public async getAll(): Promise<any[] | any> {
