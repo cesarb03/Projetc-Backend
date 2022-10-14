@@ -3,6 +3,9 @@ import Logger from '../utils/logger';
 import ProductMongoCloudDAO from './DAOs/products/mongoDbCloud';
 import CartMongoCloudDAO from './DAOs/cart/mongoDbCloud';
 import OrderMongoCloudDAO from './DAOs/order/mongoDbCloud';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 class PersistenceFactory {
   static getPersistence(persistence: string | number, modelName: any) {
@@ -37,6 +40,6 @@ class PersistenceFactory {
   }
 }
 
-const persistence = persistenceConfig.PERSISTENCE;
+const persistence: number = persistenceConfig.PERSISTENCE;
 
 export default (modelName: any) => PersistenceFactory.getPersistence(persistence, modelName);

@@ -9,6 +9,7 @@ class ProductController {
     try {
       const products = await ProductService.getAll();
       return res.status(200).json({ products: products });
+      // return products
     } catch (error) {
       Logger.error(`Error in getAll method: ${error}`);
     }
