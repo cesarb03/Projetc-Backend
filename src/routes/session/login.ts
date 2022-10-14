@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import passport from 'passport';
-import { renderLogin, login, renderFailedLogin } from '../../controllers/sessionControllers';
+import { SessionController } from '../../controllers';
 
 export const sessionLogin = Router();
 
-sessionLogin.get('/', renderLogin);
-sessionLogin.post('/', passport.authenticate('login', { failureRedirect: '/login/failed', failureFlash: true }), login);
-sessionLogin.get('/failed', renderFailedLogin);
+sessionLogin.get('/', SessionController.renderLogin);
+sessionLogin.post('/', passport.authenticate('login', { failureRedirect: '/login/failed', failureFlash: true }), SessionController.login);
+sessionLogin.get('/failed', SessionController.renderFailedLogin);

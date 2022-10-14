@@ -38,10 +38,6 @@ switch (process.env.DB_PROVIDER) {
         Promise.resolve().then(function () { return __importStar(require('./products/daoProductsMongoDb')); }).then(function (dao) { return (exports.productDao = productDao = dao.default); });
         Promise.resolve().then(function () { return __importStar(require('./cart/daoCartMongoDb')); }).then(function (dao) { return (exports.cartDao = cartDao = dao.default); });
         break;
-    case 'fs':
-        Promise.resolve().then(function () { return __importStar(require('./products/daoProductsFilesystem')); }).then(function (dao) { return (exports.productDao = productDao = dao.default); });
-        Promise.resolve().then(function () { return __importStar(require('./cart/daoCartFilesystem')); }).then(function (dao) { return (exports.cartDao = cartDao = dao.default); });
-        break;
     default:
         exports.productDao = productDao = require('./products/daoProductsMongoDb');
         exports.cartDao = cartDao = require('./cart/daoCartMongoDb');

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import bcryptjs from 'bcryptjs';
 import { User } from '../../interfaces/User';
-import { cartCreate } from '../../controllers/cartControllers';
+import { CartController } from '../../controllers';
 import { NextFunction } from 'express';
 
 const userSchema = new mongoose.Schema(
@@ -33,7 +33,7 @@ userSchema.pre('save', async function (next) {
 userSchema.post('save', async function (res: any, next: NextFunction) {
   try {
     const user = { id: this.id, email: this.email };
-    await cartCreate(user);
+    await CartController.cartCreate(user);
     next();
   } catch (err: any) {
     next(err);

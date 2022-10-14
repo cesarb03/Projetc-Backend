@@ -2,7 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import indexRouter from './routes/index';
 // Server Config
-import config from './db/config';
+import persistenceConfig from './db/config';
 import MongoStore from 'connect-mongo';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -60,7 +60,7 @@ const mongoOptions: any = { useNewUrlParser: true, useUnifiedTopology: true };
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: config.mongoDB.URI,
+      mongoUrl: persistenceConfig.MONGODB,
       mongoOptions,
     }),
     secret: process.env.SECRET_KEY as string,

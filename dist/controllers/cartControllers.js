@@ -44,7 +44,7 @@ var cartService_1 = require("../services/cartService");
 var messaging_1 = __importDefault(require("../utils/messaging"));
 var logger_1 = __importDefault(require("../utils/logger"));
 var nodemailer_1 = __importDefault(require("../utils/nodemailer"));
-//Esta funcion se ejecutará con el hook post declarado en el esquema del user, cuando se crea un user
+// Esta funcion se ejecutará con el hook post declarado en el esquema del user, cuando se crea un user
 var cartCreate = function (user) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {

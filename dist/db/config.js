@@ -3,11 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var dotenv_1 = __importDefault(require("dotenv"));
+const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-exports.default = {
-    mongoDB: {
-        URI: "mongodb+srv://".concat(process.env.DB_USER, ":").concat(process.env.DB_PASSWORD, "@").concat(process.env.DB_CLUSTER, ".mongodb.net/").concat(process.env.DB_NAME, "?retryWrites=true&w=majority"),
-    },
+const persistence = process.argv[4] || process.env.PERSISTENCE || 3;
+const persistenceConfig = {
+    MONGODB: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+    PERSISTENCE: persistence,
 };
+exports.default = persistenceConfig;
 //# sourceMappingURL=config.js.map

@@ -1,23 +1,16 @@
 import { Router } from 'express';
-import {
-  cartCreate,
-  cartDelete,
-  getProductsByCartId,
-  addToCartById,
-  deleteProductByCartId,
-  cartOrder,
-} from '../controllers/cartControllers';
+import { CartController } from '../controllers';
 
 export const cartRouter = Router();
 
-cartRouter.route('/cart/').post(cartCreate).get(getProductsByCartId);
+cartRouter.route('/cart/').post(CartController.cartCreate).get(CartController.getProductsByCartId);
 
-cartRouter.route('/cart/delete').post(cartDelete);
+cartRouter.route('/cart/delete').post(CartController.cartDelete);
 
-cartRouter.route('/cart/addProduct').post(addToCartById);
+cartRouter.route('/cart/addProduct').post(CartController.addToCartById);
 
-cartRouter.route('/cart/deleteProduct').post(deleteProductByCartId);
+cartRouter.route('/cart/deleteProduct').post(CartController.deleteProductByCartId);
 
-cartRouter.route('/cart/order').post(cartOrder);
+cartRouter.route('/cart/order').post(CartController.cartOrder);
 
 export default cartRouter;

@@ -1,34 +1,36 @@
-import { productDao } from '../models/dao';
+import m from '../persistence/factory';
+const model = m('products');
 
-const getAll = async () => {
-  const data = await productDao.getAll();
-  return data;
-};
+class ProductService {
+  model: any;
 
-const getById = async (id: any) => {
-  const data = await productDao.getById(Number(id));
-  return data;
-};
+  constructor(model: any) {
+    this.model = model;
+  }
 
-const addProduct = async (product: any) => {
-  const data = await productDao.addProduct(product);
-  return data;
-};
+  async getAll() {
+    const data = await this.model.getAll();
+    return data;
+  }
+  async getById(id: any) {
+    const data = await this.model.getById(Number(id));
+    return data;
+  }
 
-const updateProductById = async (id: any, product: any) => {
-  const data = await productDao.updateProductById(Number(id), product);
-  return data;
-};
+  async addProduct(product: any) {
+    const data = await this.model.addProduct(product);
+    return data;
+  }
 
-const deleteProductById = async (id: any) => {
-  const data = await productDao.deleteProductById(Number(id));
-  return data;
-};
+  async updateProductById(id: any, product: any) {
+    const data = await this.model.updateProductById(Number(id), product);
+    return data;
+  }
 
-export const productService = {
-  getAll,
-  getById,
-  addProduct,
-  updateProductById,
-  deleteProductById,
-};
+  async deleteProductById(id: any) {
+    const data = await this.model.deleteProductById(Number(id));
+    return data;
+  }
+}
+
+export default new ProductService(model);

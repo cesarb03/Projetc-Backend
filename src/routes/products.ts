@@ -1,10 +1,14 @@
 import { Router } from 'express';
 export const productsRouter = Router();
-import { getAll, getById, addProduct, updateProductById, deleteProductById } from '../controllers/productsControllers';
+import { ProductController } from '../controllers';
 
 // Vinculo los endpoints con sus respectivos controllers.
-productsRouter.route('/products').get(getAll).post(addProduct);
+productsRouter.route('/products').get(ProductController.getAll).post(ProductController.addProduct);
 
-productsRouter.route('/products/:id').get(getById).put(updateProductById).delete(deleteProductById);
+productsRouter
+  .route('/products/:id')
+  .get(ProductController.getById)
+  .put(ProductController.updateProductById)
+  .delete(ProductController.deleteProductById);
 
 export default productsRouter;

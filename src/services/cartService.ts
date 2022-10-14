@@ -1,36 +1,32 @@
-import { cartDao } from '../models/dao';
-import Logger from '../utils/logger';
+import m from '../persistence/factory';
+const model = m('cart');
 
-const createNewCart = async (user: any) => {
-  const data = await cartDao.createNewCart(user);
-  return data;
-};
+class CartService {
+  model: any;
 
-const cartDeleteById = async (user: any) => {
-  const data = await cartDao.cartDeleteById(user);
-  return data;
-};
+  constructor(model: any) {
+    this.model = model;
+  }
 
-const getProductsByCartId = async (user: any) => {
-  const data = await cartDao.getProductsByCartId(user);
-  return data;
-};
+  async createNewCart(user: any) {
+    return await this.model.createNewCart(user);
+  }
 
-const addProductsById = async (user: any, product: any) => {
-  const data = await cartDao.addProductsById(user, product);
-  return data;
-};
+  async cartDeleteById(user: any) {
+    return await this.model.cartDeleteById(user);
+  }
 
-const deleteProductByCartId = async (user: any, product: any) => {
-  Logger.info(`Service: ${product}`);
-  const data = await cartDao.deleteProductByCartId(user, product);
-  return data;
-};
+  async getProductsByCartId(user: any) {
+    return await this.model.getProductsByCartId(user);
+  }
 
-export const cartService = {
-  createNewCart,
-  cartDeleteById,
-  getProductsByCartId,
-  addProductsById,
-  deleteProductByCartId,
-};
+  async addProductsById(user: any, product: any) {
+    return await this.model.addProductsById(user, product);
+  }
+
+  async deleteProductByCartId(user: any, product: any) {
+    return await this.model.deleteProductByCartId(user, product);
+  }
+}
+
+export default new CartService(model);

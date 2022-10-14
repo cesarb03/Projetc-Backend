@@ -1,25 +1,19 @@
 import { Router } from 'express';
 import passport from 'passport';
-import user from '../../models/schemas/user';
-import {
-  renderSignUp,
-  signUp,
-  renderFailedSignup,
-  renderUpload,
-  uploadSuccess,
-} from '../../controllers/sessionControllers';
+import user from '../../models/schemas/userSchema';
+import { SessionController } from '../../controllers';
 import { upload } from '../../utils/multer';
 import Logger from '../../utils/logger';
 
 export const sessionSignup = Router();
 
-sessionSignup.get('/', renderSignUp);
+sessionSignup.get('/', SessionController.renderSignUp);
 sessionSignup.post(
   '/',
   passport.authenticate('signup', { failureRedirect: '/signup/failed', failureFlash: true }),
-  signUp
+  SessionController.signUp
 );
-sessionSignup.get('/upload', renderUpload);
+sessionSignup.get('/upload', SessionController.renderUpload);
 sessionSignup.post(
   '/upload',
   upload.single('picture'),
@@ -53,7 +47,7 @@ sessionSignup.post(
 
     next();
   },
-  uploadSuccess
+  SessionController.uploadSuccess
 );
 
-sessionSignup.get('/failed', renderFailedSignup);
+sessionSignup.get('/failed', SessionController.renderFailedSignup);

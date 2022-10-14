@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "target": "es5",  
+      "target": "ES2016",  
       "module": "commonjs",
       "sourceMap": true,
       "outDir": "./dist",
@@ -17,7 +17,7 @@
       "forceConsistentCasingInFileNames": true,
       "resolveJsonModule": true
   },
-  "lib": ["es2015"],
+  "lib": ["ES2015"],
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
