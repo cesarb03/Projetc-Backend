@@ -12,24 +12,20 @@ class ProductService {
     const data = await this.model.getAll();
     return data;
   }
-  async getById(id: any) {
-    const data = await this.model.getById(Number(id));
-    return data;
+  async getById(id: string) {
+    return await this.model.getById(id);
   }
 
   async addProduct(product: any) {
-    const data = await this.model.addProduct(product);
-    return data;
+    return await this.model.addProduct(product);
   }
 
-  async updateProductById(id: any, product: any) {
-    const data = await this.model.updateProductById(Number(id), product);
-    return data;
+  async updateProductById(id: string, product: any) {
+    return await this.model.updateProductById(id, product);
   }
 
-  async deleteProductById(id: any) {
-    const data = await this.model.deleteProductById(Number(id));
-    return data;
+  async deleteProductById(id: string) {
+    return await this.model.deleteProductById(id);
   }
 }
 

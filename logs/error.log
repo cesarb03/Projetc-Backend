@@ -113,3 +113,163 @@
   level: 'error',
   timestamp: '2022-10-14T18:21:06.538Z'
 }
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:16:31.854Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:16:31.859Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:16:31.899Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:21:32.816Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:21:32.820Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:21:32.835Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:22:57.847Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:22:57.851Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:22:57.854Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:27:26.154Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:27:26.173Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:27:26.180Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:28:09.706Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:28:09.740Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:28:09.747Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:31:34.136Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:31:34.141Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:31:34.153Z'
+}
+{
+  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-18T19:31:53.068Z'
+}
+{
+  message: 'An error has ocurred when starting: Error: listen EADDRINUSE: address already in use :::8080',
+  level: 'error',
+  timestamp: '2022-10-19T15:12:22.092Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:40:56.535Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:40:56.538Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:42:10.423Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:42:10.426Z'
+}
+{
+  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "63323e2d78d8ebad08060f" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:51:31.781Z'
+}
+{
+  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "63323e2d78d8ebad08060f" (type string) at path "_id" for model "products"',
+  level: 'error',
+  timestamp: '2022-10-19T20:51:31.796Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`djfh`) is shorter than the minimum allowed length (8).',
+  level: 'error',
+  timestamp: '2022-10-19T21:59:11.072Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`djfh`) is shorter than the minimum allowed length (8).',
+  level: 'error',
+  timestamp: '2022-10-19T22:00:43.496Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`"djfh"`) is shorter than the minimum allowed length (8).',
+  level: 'error',
+  timestamp: '2022-10-19T22:01:14.692Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: name: Path `name` is required.',
+  level: 'error',
+  timestamp: '2022-10-19T22:03:04.165Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
+  level: 'error',
+  timestamp: '2022-10-19T22:06:19.575Z'
+}
+{
+  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
+  level: 'error',
+  timestamp: '2022-10-19T22:23:10.090Z'
+}

@@ -8,7 +8,9 @@
     "build": "tsc",
     "lint": "eslint src --ignore-path .gitignore\"",
     "prettier": "prettier src --write --ignore-path .gitignore",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test_axios": "node ./tests/axiosTests.js",
+    "test_mocha": "mocha ./tests/productTests.js"
   },
   "keywords": [],
   "author": "Cesar Bergamasco",
@@ -16,7 +18,6 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "firebase-admin": "^11.0.0",
     "mongoose": "^6.5.2",
     "twilio": "^3.82.1",
     "nodemailer": "^6.7.8",
@@ -31,7 +32,9 @@
     "ejs": "^3.1.8",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "@faker-js/faker": "^7.3.0",
+    "axios": "^1.1.3"
   },
   "husky": {
     "hooks": {
@@ -64,6 +67,9 @@
     "@types/multer": "^1.4.7",
     "@types/express-session": "^1.17.5",
     "@types/connect-flash": "^0.0.37",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0",
+    "supertest": "^6.3.0"
   }
 }

@@ -25,7 +25,7 @@ const ProductSchema = new mongoose_1.default.Schema({
     photoURL: {
         type: String,
         required: true,
-        minlength: 8,
+        minlength: 3,
         maxlength: 200,
     },
     stock: {
