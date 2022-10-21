@@ -40,7 +40,9 @@ class ProductMongoDAO extends IProductDAO {
 
   async addProduct(product: any): Promise<any | void> {
     const productToSave = new this.model(product);
-    await productToSave.save();
+    // await productToSave.save();
+    const data = await productToSave.save();
+    return new this.DTO(data).toJson();
   }
 
   public async updateProductById(id: any, newData: any): Promise<any> {
@@ -50,7 +52,7 @@ class ProductMongoDAO extends IProductDAO {
       if (updatedData.matchedCount === 0) {
         return { error: 'Product not found.' };
       } else {
-        return { msg: `Product ${id} updated!` };
+        return this.getById(id);
       }
     } catch (err) {
       Logger.error(`MongoAtlas updateProductById method error: ${err}`);
@@ -59,12 +61,13 @@ class ProductMongoDAO extends IProductDAO {
 
   public async deleteProductById(id: any): Promise<any> {
     try {
-      const deletedData = await this.model.deleteOne({ _id: id });
-      if (deletedData.deletedCount === 0) {
-        return { error: 'Product not found.' };
-      } else {
-        return { msg: 'Product deleted.' };
-      }
+      const entity = await this.getById(id);
+
+      if (!entity) return undefined;
+
+      await this.model.deleteOne({ _id: id });
+
+      return entity;
     } catch (err) {
       Logger.error(`MongoAtlas deleteProductById method error: ${err}`);
     }

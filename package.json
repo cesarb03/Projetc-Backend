@@ -16,25 +16,27 @@
   "author": "Cesar Bergamasco",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "axios": "^1.1.3",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mongoose": "^6.5.2",
-    "twilio": "^3.82.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "express-session": "^1.17.3",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.6.6",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.7.8",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "twilio": "^3.82.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-node-externals": "^3.0.0",
-    "bcryptjs": "^2.4.3",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "express-session": "^1.17.3",
-    "multer": "^1.4.5-lts.1",
-    "ejs": "^3.1.8",
-    "connect-flash": "^0.1.1",
-    "connect-mongo": "^4.6.0",
-    "winston": "^3.8.2",
-    "@faker-js/faker": "^7.3.0",
-    "axios": "^1.1.3"
+    "winston": "^3.8.2"
   },
   "husky": {
     "hooks": {
@@ -42,10 +44,18 @@
     }
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/connect-flash": "^0.0.37",
     "@types/express": "^4.17.14",
+    "@types/express-session": "^1.17.5",
+    "@types/multer": "^1.4.7",
     "@types/node": "^18.7.18",
+    "@types/nodemailer": "^6.4.6",
+    "@types/passport": "^1.0.10",
+    "@types/passport-local": "^1.0.34",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
+    "chai": "^4.3.6",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
@@ -56,20 +66,24 @@
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-standard": "^5.0.0",
     "husky": "^8.0.1",
+    "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
+    "supertest": "^6.3.0",
     "ts-loader": "^9.3.1",
-    "@types/nodemailer": "^6.4.6",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/passport": "^1.0.10",
-    "@types/passport-local": "^1.0.34",
-    "@types/multer": "^1.4.7",
-    "@types/express-session": "^1.17.5",
-    "@types/connect-flash": "^0.0.37",
-    "typescript": "^4.8.3",
-    "chai": "^4.3.6",
-    "mocha": "^10.1.0",
-    "supertest": "^6.3.0"
-  }
+    "typescript": "^4.8.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cesarb03/Projetc-Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cesarb03/Projetc-Backend/issues"
+  },
+  "homepage": "https://github.com/cesarb03/Projetc-Backend#readme",
+  "description": ""
 }

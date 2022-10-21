@@ -13,19 +13,27 @@ class ProductService {
     return data;
   }
   async getById(id: string) {
-    return await this.model.getById(id);
+    // return await this.model.getById(id);
+    const data = await this.model.getById(id);
+    return data;
   }
 
   async addProduct(product: any) {
-    return await this.model.addProduct(product);
+    // return await this.model.addProduct(product);
+    const data = await this.model.addProduct(product);
+    return data;
   }
 
   async updateProductById(id: string, product: any) {
-    return await this.model.updateProductById(id, product);
+    // return await this.model.updateProductById(id, product);
+    const data = await this.model.updateProductById(id, product);
+    return data;
   }
 
   async deleteProductById(id: string) {
-    return await this.model.deleteProductById(id);
+    // return await this.model.deleteProductById(id);
+    const data = await this.model.deleteProductById(id);
+    return data;
   }
 }
 
