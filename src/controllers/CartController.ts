@@ -31,7 +31,7 @@ class CartController {
     try {
       const user = req.user;
       const cartProducts = await CartService.getProductsByCartId(user);
-      res.render('cart', { products: cartProducts, user: user });
+      return res.status(200).json({ products: cartProducts, User: user });
     } catch (error) {
       Logger.error(error);
     }
@@ -39,7 +39,7 @@ class CartController {
 
   async addToCartById(req: Request, res: Response) {
     try {
-      const product = req.body;
+      const product = req.params;
       const user = req.user;
       await CartService.addProductsById(product, user);
       res.redirect('/api/cart');
@@ -50,7 +50,7 @@ class CartController {
 
   async deleteProductByCartId(req: Request, res: Response) {
     try {
-      const product = req.body;
+      const { product } = req.params;
       const user = req.user;
       await CartService.deleteProductByCartId(user, product);
       res.redirect('/api/cart');

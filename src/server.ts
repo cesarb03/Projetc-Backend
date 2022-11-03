@@ -12,10 +12,6 @@ import Logger from './utils/logger';
 import passport from 'passport';
 import { passportLoad } from './utils/passport';
 import flash from 'connect-flash';
-//GraphQL
-import { graphqlHTTP } from 'express-graphql';
-import graphProductSchema from './graphQl/graphProductSchema';
-import { graphProductController } from './graphQl/graphProductController';
 
 declare module 'express-session' {
   export interface SessionData {
@@ -82,22 +78,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 passportLoad(passport);
-
-//GraphQL
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: graphProductSchema,
-    rootValue: {
-      getProduct: graphProductController.getProduct,
-      getAll: graphProductController.getAll,
-      addProduct: graphProductController.addProduct,
-      updateProduct: graphProductController.updateProduct,
-      deleteProduct: graphProductController.deleteProduct,
-    },
-    graphiql: true,
-  })
-);
 
 // ROUTES
 app.use('/', indexRouter);

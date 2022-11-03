@@ -8,7 +8,7 @@ class ProductController {
   async getAll(req: Request, res: Response) {
     try {
       const products = await ProductService.getAll();
-      return res.status(200).json({ products: products });
+      return res.status(200).json({ products });
       // return products
     } catch (error) {
       Logger.error(`Error in getAll method: ${error}`);
@@ -23,7 +23,7 @@ class ProductController {
       if (product === undefined || product === null)
         return res.status(404).json({ error: 'Cannot find requested product' });
 
-      return res.status(200).json({ product: product });
+      return res.status(200).json({ Product: product });
     } catch (error) {
       Logger.error(`Error in getById method: ${error}`);
       return res.status(500).json({ error: 'An error has occurred.' });

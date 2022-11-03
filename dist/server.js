@@ -17,10 +17,6 @@ const logger_1 = __importDefault(require("./utils/logger"));
 const passport_1 = __importDefault(require("passport"));
 const passport_2 = require("./utils/passport");
 const connect_flash_1 = __importDefault(require("connect-flash"));
-//GraphQL
-const express_graphql_1 = require("express-graphql");
-const graphProductSchema_1 = __importDefault(require("./graphQl/graphProductSchema"));
-const graphProductController_1 = require("./graphQl/graphProductController");
 // DOTENV
 dotenv_1.default.config();
 const port = process.env.PORT || 8080;
@@ -70,18 +66,6 @@ app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
 app.use((0, connect_flash_1.default)());
 (0, passport_2.passportLoad)(passport_1.default);
-//GraphQL
-app.use('/graphql', (0, express_graphql_1.graphqlHTTP)({
-    schema: graphProductSchema_1.default,
-    rootValue: {
-        getProduct: graphProductController_1.graphProductController.getProduct,
-        getAll: graphProductController_1.graphProductController.getAll,
-        addProduct: graphProductController_1.graphProductController.addProduct,
-        updateProduct: graphProductController_1.graphProductController.updateProduct,
-        deleteProduct: graphProductController_1.graphProductController.deleteProduct,
-    },
-    graphiql: true,
-}));
 // ROUTES
 app.use('/', index_1.default);
 //# sourceMappingURL=server.js.map

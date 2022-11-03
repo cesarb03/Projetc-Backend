@@ -7,7 +7,7 @@ cartRouter.route('/cart/').post(CartController.cartCreate).get(CartController.ge
 
 cartRouter.route('/cart/delete').post(CartController.cartDelete);
 
-cartRouter.route('/cart/addProduct').post(CartController.addToCartById);
+cartRouter.route('/cart/:product').post(CartController.addToCartById);
 
 cartRouter.route('/cart/deleteProduct').post(CartController.deleteProductByCartId);
 

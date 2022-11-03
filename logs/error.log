@@ -293,3 +293,243 @@
   level: 'error',
   timestamp: '2022-10-21T18:56:51.696Z'
 }
+{ level: 'error', timestamp: '2022-11-03T13:59:26.749Z' }
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    'user.id': ValidatorError: Path `user.id` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.id` is required.',
+        type: 'required',
+        path: 'user.id',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.id',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T15:04:48.022Z'
+}
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    'user.id': ValidatorError: Path `user.id` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.id` is required.',
+        type: 'required',
+        path: 'user.id',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.id',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T15:30:07.718Z'
+}
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    'user.id': ValidatorError: Path `user.id` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.id` is required.',
+        type: 'required',
+        path: 'user.id',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.id',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T15:39:29.869Z'
+}
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T15:49:17.623Z'
+}
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T16:03:28.024Z'
+}
+{
+  errors: {
+    'user.email': ValidatorError: Path `user.email` is required.
+        at validate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1330:7)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:2835:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: {
+        validator: [Function (anonymous)],
+        message: 'Path `user.email` is required.',
+        type: 'required',
+        path: 'user.email',
+        value: undefined
+      },
+      kind: 'required',
+      path: 'user.email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T16:05:22.962Z'
+}
+{ level: 'error', timestamp: '2022-11-03T16:47:23.192Z' }
+{ level: 'error', timestamp: '2022-11-03T16:48:56.741Z' }
+{ level: 'error', timestamp: '2022-11-03T16:56:20.770Z' }
+{
+  errors: {
+    user: CastError: Cast to string failed for value "{ id: '6363fcc5cde2bb5ceb36d346', email: 'cesar_b_03@outlook.com' }" (type Object) at path "user"
+        at SchemaString.cast (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schema\string.js:603:11)
+        at SchemaString.SchemaType.applySetters (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\schematype.js:1201:12)
+        at model.$set (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:1368:22)
+        at model.$set (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:1093:16)
+        at model.Document (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\document.js:166:12)
+        at model.Model (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\model.js:121:12)
+        at new model (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\node_modules\mongoose\lib\model.js:5020:15)
+        at CartMongoDAO.<anonymous> (C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\src\persistence\DAOs\cart\mongoDbCloud.ts:17:18)
+        at Generator.next (<anonymous>)
+        at C:\Users\Cesar\Downloads\BackEnd Dev\Projetc - Backend\src\persistence\DAOs\cart\mongoDbCloud.ts:8:71 {
+      stringValue: `"{ id: '6363fcc5cde2bb5ceb36d346', email: 'cesar_b_03@outlook.com' }"`,
+      messageFormat: undefined,
+      kind: 'string',
+      value: {
+        id: '6363fcc5cde2bb5ceb36d346',
+        email: 'cesar_b_03@outlook.com'
+      },
+      path: 'user',
+      reason: null,
+      valueType: 'Object'
+    }
+  },
+  _message: 'carts validation failed',
+  level: 'error',
+  timestamp: '2022-11-03T17:39:17.933Z'
+}
+{ level: 'error', timestamp: '2022-11-03T17:41:39.852Z' }
+{ level: 'error', timestamp: '2022-11-03T17:49:57.672Z' }
+{ level: 'error', timestamp: '2022-11-03T18:14:23.373Z' }

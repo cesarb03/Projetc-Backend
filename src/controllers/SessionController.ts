@@ -44,7 +44,7 @@ class SessionController {
 
   async signUp(req: Request, res: Response) {
     const user = req.user;
-    res.status(201).render('createdUser', { user: user });
+    res.status(201);
     MailSender.newRegister(user);
   }
 

@@ -35,7 +35,7 @@ userSchema.post('save', async function (res: any, next: NextFunction) {
     const user = { id: this.id, email: this.email };
     await CartController.cartCreate(user);
     next();
-  } catch (err: any) {
+  } catch (err) {
     next(err);
   }
 });

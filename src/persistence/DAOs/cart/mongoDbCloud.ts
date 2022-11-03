@@ -14,8 +14,8 @@ class CartMongoDAO {
   }
 
   async createNewCart(user: any) {
-    //const cart = new this.model({user: {id: user.id, username: user.email}, products: []})
-    const cart = new this.model({ user: user.id, products: [] });
+    const cart = new this.model({ user: { id: user.id, email: user.email }, products: [] });
+    // const cart = new this.model({ user: user.id, products: [] });
     await cart.save();
   }
 
@@ -42,7 +42,7 @@ class CartMongoDAO {
   }
 
   async getProductsByCartId(user: any) {
-    const cart: any = await this.model.findOne({ user: user.id });
+    const cart: any = await this.model.findOne().populate({ path: 'user.id' });
 
     if (cart === null) {
       return { error: 'Cart not found' };
@@ -52,8 +52,10 @@ class CartMongoDAO {
     }
   }
 
-  async addProductsById(user: any, product: any) {
-    const cart: any = await this.model.findOne().populate({ path: 'user.id' });
+  async addProductsById(product: any, user: any) {
+    // const cart: any = await this.model.findOne({ user: user.id });
+    const cart: any = await this.model.findOne({ user: user.id }).populate('product');
+
     if (cart === null) {
       return { error: 'Cart not found' };
     } else {
