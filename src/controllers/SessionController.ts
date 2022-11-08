@@ -7,17 +7,9 @@ class SessionController {
   // LOGIN
   async login(req: Request, res: Response, next: NextFunction) {
     try {
-      if (req.isAuthenticated()) next();
+      if (req.isAuthenticated()) res.status(200).json({ message: 'user logged' });
     } catch (err) {
       Logger.error(`Error when login method in SessionControllers, ${err}`);
-    }
-  }
-
-  async renderLogin(req: Request, res: Response) {
-    if (req.isAuthenticated()) {
-      res.redirect('/');
-    } else {
-      res.render('login');
     }
   }
 
@@ -43,14 +35,18 @@ class SessionController {
   }
 
   async signUp(req: Request, res: Response) {
-    const user = req.user;
-    res.status(201);
-    MailSender.newRegister(user);
+    try {
+      const user = req.user;
+      MailSender.newRegister(user);
+      res.status(200).json({ message: 'user registered' });
+    } catch (error) {
+      Logger.error(error);
+    }
   }
 
   // FAILED SIGNUP
-  async renderFailedSignup(req: Request, res: Response) {
-    res.status(409).render('failedSignup', { message: req.flash('error')[0] });
+  async failedSignup(req: Request, res: Response) {
+    res.status(409).json({ error: req.flash('error')[0] });
   }
 
   // FAILED LOGIN

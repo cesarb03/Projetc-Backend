@@ -8,20 +8,20 @@ class CartController {
   constructor() {}
 
   // Esta funcion se ejecutará con el hook post declarado en el esquema del user, cuando se crea un user
-  async cartCreate(user: any) {
+  async cartCreate(user: any, res: Response) {
     try {
       await CartService.createNewCart(user);
-      Logger.info(`Cart created for user ${user.email}`);
+      return res.status(200).json({ message: 'Cart Created' });
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`Error in createNewCart method: ${error}`);
     }
   }
 
   async cartDelete(req: Request, res: Response) {
     try {
       const user = req.user;
-      await CartService.cartDeleteById(user);
-      res.redirect('/api/cart');
+      const cart = await CartService.cartDeleteById(user);
+      return res.status(200).json({ NewCart: cart });
     } catch (error) {
       Logger.error(`Error in cartDeleteById method: ${error}`);
     }
@@ -31,7 +31,7 @@ class CartController {
     try {
       const user = req.user;
       const cartProducts = await CartService.getProductsByCartId(user);
-      return res.status(200).json({ products: cartProducts, User: user });
+      return res.status(200).json({ products: cartProducts });
     } catch (error) {
       Logger.error(error);
     }
@@ -39,23 +39,25 @@ class CartController {
 
   async addToCartById(req: Request, res: Response) {
     try {
-      const product = req.params;
+      const { prod_id } = req.params;
+      const quantity = req.body.quantity;
       const user = req.user;
-      await CartService.addProductsById(product, user);
-      res.redirect('/api/cart');
+      const cart = await CartService.addProductsById(user, prod_id, quantity);
+      return res.status(200).json({ ProductAdded: prod_id, NewCart: cart });
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`Error in addProductsById method: ${error}`);
     }
   }
 
   async deleteProductByCartId(req: Request, res: Response) {
     try {
-      const { product } = req.params;
       const user = req.user;
-      await CartService.deleteProductByCartId(user, product);
-      res.redirect('/api/cart');
+      const { prod_id } = req.params;
+
+      const productDeleted = await CartService.deleteProductByCartId(user, prod_id);
+      return res.status(200).json({ Cart: productDeleted });
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`Error in deleteProductByCartId method: ${error}`);
     }
   }
 
@@ -69,7 +71,7 @@ class CartController {
       MessageService.newWhatsapp(user);
       res.redirect('/');
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`Error in cartOrder method: ${error}`);
     }
   }
 }

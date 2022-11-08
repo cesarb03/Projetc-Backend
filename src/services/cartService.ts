@@ -20,8 +20,8 @@ class CartService {
     return await this.model.getProductsByCartId(user);
   }
 
-  async addProductsById(user: any, product: any) {
-    return await this.model.addProductsById(user, product);
+  async addProductsById(user: any, prod_id: any, quantity: any) {
+    return await this.model.addProductsById(user, prod_id, quantity);
   }
 
   async deleteProductByCartId(user: any, product: any) {

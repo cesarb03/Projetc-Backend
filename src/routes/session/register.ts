@@ -7,7 +7,6 @@ import Logger from '../../utils/logger';
 
 export const sessionSignup = Router();
 
-sessionSignup.get('/', SessionController.renderSignUp);
 sessionSignup.post(
   '/',
   passport.authenticate('signup', { failureRedirect: '/signup/failed', failureFlash: true }),
@@ -49,5 +48,3 @@ sessionSignup.post(
   },
   SessionController.uploadSuccess
 );
-
-sessionSignup.get('/failed', SessionController.renderFailedSignup);

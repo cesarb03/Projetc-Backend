@@ -33,7 +33,7 @@ userSchema.pre('save', async function (next) {
 userSchema.post('save', async function (res: any, next: NextFunction) {
   try {
     const user = { id: this.id, email: this.email };
-    await CartController.cartCreate(user);
+    await CartController.cartCreate(user, res);
     next();
   } catch (err) {
     next(err);

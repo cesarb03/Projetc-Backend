@@ -34,9 +34,9 @@ const ProductSchema = new mongoose_1.default.Schema({
         min: 0,
     },
     timestamp: {
-        type: Number,
+        type: String,
         required: false,
-        default: Date.now,
+        default: new Date().toLocaleString(),
     },
 });
 exports.default = mongoose_1.default.model('products', ProductSchema);
