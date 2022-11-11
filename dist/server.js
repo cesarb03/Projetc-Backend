@@ -7,19 +7,16 @@ const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
 const index_1 = __importDefault(require("./routes/index"));
 // Server Config
-const config_1 = __importDefault(require("./db/config"));
+const config_1 = require("./db/config");
 const connect_mongo_1 = __importDefault(require("connect-mongo"));
 const path_1 = __importDefault(require("path"));
-const dotenv_1 = __importDefault(require("dotenv"));
 const cluster_1 = __importDefault(require("cluster"));
 const os_1 = __importDefault(require("os"));
 const logger_1 = __importDefault(require("./utils/logger"));
 const passport_1 = __importDefault(require("passport"));
 const passport_2 = require("./utils/passport");
 const connect_flash_1 = __importDefault(require("connect-flash"));
-// DOTENV
-dotenv_1.default.config();
-const port = process.env.PORT || 8080;
+const port = config_1.config.PORT || 8080;
 // SERVER
 const app = (0, express_1.default)();
 const cpus = os_1.default.cpus();
@@ -50,15 +47,15 @@ app.set('view engine', 'ejs');
 const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 app.use((0, express_session_1.default)({
     store: connect_mongo_1.default.create({
-        mongoUrl: config_1.default.MONGODB,
+        mongoUrl: config_1.config.MONGODB,
         mongoOptions,
     }),
-    secret: process.env.SECRET_KEY,
+    secret: config_1.config.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     rolling: true,
     cookie: {
-        maxAge: 600000,
+        maxAge: Number(config_1.config.SESSION_TIME),
     },
 }));
 // PASSPORT

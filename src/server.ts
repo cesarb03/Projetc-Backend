@@ -2,10 +2,9 @@ import express from 'express';
 import session from 'express-session';
 import indexRouter from './routes/index';
 // Server Config
-import persistenceConfig from './db/config';
+import { config } from './db/config';
 import MongoStore from 'connect-mongo';
 import path from 'path';
-import dotenv from 'dotenv';
 import cluster from 'cluster';
 import os from 'os';
 import Logger from './utils/logger';
@@ -22,9 +21,7 @@ declare module 'express-session' {
   }
 }
 
-// DOTENV
-dotenv.config();
-const port = process.env.PORT || 8080;
+const port = config.PORT || 8080;
 // SERVER
 const app = express();
 const cpus = os.cpus();
@@ -60,15 +57,15 @@ const mongoOptions: any = { useNewUrlParser: true, useUnifiedTopology: true };
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: persistenceConfig.MONGODB,
+      mongoUrl: config.MONGODB,
       mongoOptions,
     }),
-    secret: process.env.SECRET_KEY as string,
+    secret: config.SECRET_KEY as string,
     resave: false,
     saveUninitialized: false,
     rolling: true, // Reinicia el tiempo de expiracion con cada request
     cookie: {
-      maxAge: 600000,
+      maxAge: Number(config.SESSION_TIME),
     },
   })
 );

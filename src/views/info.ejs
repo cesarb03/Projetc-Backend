@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío Clase 28</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-success">INFO:</h1>
+        <br>
+    <ul>
+        <li >
+            <h3 >PUERTO</h3>
+            <p><%=config.PORT%></p>
+        </li>
+        <li >
+            <h3 >URL BASE DE DATOS</h3>
+            <p><%=config.MONGODB%></p>
+        </li>
+        <li >
+            <h3 >MAIL DE NOTIFICACIONES</h3>
+            <p><%=config.GMAIL_USER%></p> 
+        </li>
+        <li >
+            <h3 >TIEMPO DE EXPIRACIÓN DE SESIÓN</h3>
+            <p><%=config.SESSION_TIME%></p> 
+        </li>
+    </ul>
+    </div>
+</body>
+</html>

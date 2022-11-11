@@ -1,11 +1,11 @@
-import persistenceConfig from '../../db/config';
+import { config } from '../../db/config';
 import Logger from '../../utils/logger';
 import mongoose from 'mongoose';
 
 const mongoConnection = async () => {
   {
     try {
-      await mongoose.connect(persistenceConfig.MONGODB);
+      await mongoose.connect(`${config.MONGODB}`);
       Logger.info('connected to mongoDB Atlas');
     } catch (err) {
       Logger.error(err);

@@ -13,10 +13,18 @@ class CartDTO {
     this.timestamp = cart.timestamp;
   }
 
-  getId() { return this.id }
-  getProduct() { return this.products }
-  getUserId() { return this.user }
-  getTimestamp() { return this.timestamp }
+  getId() {
+    return this.id;
+  }
+  getProduct() {
+    return this.products;
+  }
+  getUserId() {
+    return this.user;
+  }
+  getTimestamp() {
+    return this.timestamp;
+  }
 
   toJson() {
     return {
