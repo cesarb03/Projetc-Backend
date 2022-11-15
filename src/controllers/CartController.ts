@@ -34,7 +34,7 @@ class CartController {
       const cartProducts = await CartService.getProductsByCartId(user);
       return res.status(200).json({ products: cartProducts });
     } catch (error) {
-      Logger.error(`Error in getProductsByCartId method: ${error}`)
+      Logger.error(`Error in getProductsByCartId method: ${error}`);
     }
   }
 
