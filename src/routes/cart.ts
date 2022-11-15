@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import { CartController } from '../controllers';
+import checkUserAuth from '../middlewares/checkUserAuth';
 
-export const cartRouter = Router();
+const cartRouter = Router();
 
-cartRouter.route('/cart/').post(CartController.cartCreate).get(CartController.getProductsByCartId);
-
-cartRouter.route('/cart/delete').post(CartController.cartDelete);
-
-cartRouter.route('/cart/addProduct').post(CartController.addToCartById);
-
-cartRouter.route('/cart/deleteProduct').post(CartController.deleteProductByCartId);
-
-cartRouter.route('/cart/order').post(CartController.cartOrder);
+cartRouter
+  .route('/cart/')
+  .delete(checkUserAuth, CartController.cartDelete)
+  .get(checkUserAuth, CartController.getProductsByCartId);
+cartRouter
+  .route('/cart/:prod_id')
+  .post(checkUserAuth, CartController.addToCartById)
+  .delete(checkUserAuth, CartController.deleteProductByCartId);
 
 export default cartRouter;

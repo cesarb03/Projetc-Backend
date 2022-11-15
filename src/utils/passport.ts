@@ -14,12 +14,12 @@ export function passportLoad(passport: PassportStatic) {
       async (email: string, password: string, done) => {
         try {
           const user = await User.findOne({ email }).exec();
-          if (!user) return done(null, false, { message: "User doesn't exist" }); //2)
+          if (!user) return done(null, false, { message: "User doesn't exist" }); // 2)
           const valid = await user.comparePassword(password, user.password);
-          if (!valid) return done(null, false, { message: 'Wrong password' }); //2)
-          return done(null, user); //1)
+          if (!valid) return done(null, false, { message: 'Wrong password' }); // 2)
+          return done(null, user); // 1)
         } catch (err) {
-          done(err); //3)
+          done(err); // 3)
         }
       }
     )
@@ -45,13 +45,13 @@ export function passportLoad(passport: PassportStatic) {
         });
         try {
           await newUser.save();
-          return done(null, newUser); //1)
+          return done(null, newUser); // 1)
         } catch (err: any) {
           if (err.code === 11000) {
-            return done(null, false, { message: 'User already exists' }); //2)
+            return done(null, false, { message: 'User already exists' }); // 2)
           }
           Logger.error(err);
-          return done(err); //3)
+          return done(err); // 3)
         }
       }
     )

@@ -1,27 +1,26 @@
 class CartDTO {
   id: string;
   products: [Object];
-  user: { id: string; username: string };
+  user: string;
+  email: string;
   timestamp: string;
 
   constructor(cart: any) {
     this.id = cart.id;
     this.products = cart.products;
-    this.user = cart.user.id;
+    this.user = cart.user_id;
+    this.email = cart.user_email;
     this.timestamp = cart.timestamp;
   }
 
   getId() {
     return this.id;
   }
-  getProduct() {
+  getProducts() {
     return this.products;
   }
   getUserId() {
-    return this.user.id;
-  }
-  getUserName() {
-    return this.user.username;
+    return this.user;
   }
   getTimestamp() {
     return this.timestamp;
@@ -31,7 +30,8 @@ class CartDTO {
     return {
       id: this.id,
       product: this.products,
-      user: this.user.id,
+      user: this.user,
+      email: this.email,
       timestamp: this.timestamp,
     };
   }

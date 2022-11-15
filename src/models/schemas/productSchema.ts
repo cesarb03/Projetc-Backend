@@ -29,10 +29,15 @@ const ProductSchema = new mongoose.Schema({
     required: false,
     min: 0,
   },
+  category: {
+    type: String,
+    required: true,
+    min: 0,
+  },
   timestamp: {
-    type: Number,
+    type: String,
     required: false,
-    default: Date.now,
+    default: new Date().toLocaleString(),
   },
 });
 

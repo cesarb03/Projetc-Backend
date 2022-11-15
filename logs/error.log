@@ -1,295 +1,33 @@
+{ level: 'error', timestamp: '2022-11-15T18:10:17.150Z' }
+{ level: 'error', timestamp: '2022-11-15T18:13:40.289Z' }
+{ level: 'error', timestamp: '2022-11-15T18:13:56.867Z' }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'Error in addProductsById method: CastError: Cast to number failed for value "undefined" (type undefined) at path "quantity"',
   level: 'error',
-  timestamp: '2022-10-14T01:01:04.620Z'
+  timestamp: '2022-11-15T18:41:26.407Z'
 }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'MongoCloud addProduct method error: ValidationError: category: Path `category` is required., photoURL: Path `photoURL` is required., price: Path `price` is required., name: Path `name` is required.',
   level: 'error',
-  timestamp: '2022-10-14T15:34:58.025Z'
+  timestamp: '2022-11-15T19:56:15.660Z'
 }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'MongoCloud addProduct method error: ValidationError: category: Path `category` is required., photoURL: Path `photoURL` is required., price: Path `price` is required., name: Path `name` is required.',
   level: 'error',
-  timestamp: '2022-10-14T15:50:26.094Z'
+  timestamp: '2022-11-15T19:56:31.270Z'
 }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'Product not deleted from cart',
   level: 'error',
-  timestamp: '2022-10-14T15:52:59.083Z'
+  timestamp: '2022-11-15T20:28:56.451Z'
 }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'Product not deleted from cart',
   level: 'error',
-  timestamp: '2022-10-14T15:53:51.375Z'
+  timestamp: '2022-11-15T20:30:45.823Z'
 }
 {
-  message: 'Persistence type not found Error: Persistence not found',
+  message: 'An error has occurred when sending a SMS: cesar@outlook.com',
   level: 'error',
-  timestamp: '2022-10-14T15:54:03.775Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T15:54:25.982Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T15:54:48.487Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T15:57:02.434Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:00:50.101Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:01:26.572Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:01:44.701Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:02:16.417Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:02:29.879Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:02:43.696Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:02:57.245Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:03:11.392Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:03:33.043Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:07:23.068Z'
-}
-{
-  message: 'Persistence type not found Error: Persistence not found',
-  level: 'error',
-  timestamp: '2022-10-14T16:09:07.802Z'
-}
-{
-  message: 'An error has occurred when sending the user registration email: cesar_b_03@outlook.com',
-  level: 'error',
-  timestamp: '2022-10-14T18:21:05.435Z'
-}
-{
-  message: 'An error has occurred when sendinding a Whatsapp message',
-  level: 'error',
-  timestamp: '2022-10-14T18:21:06.531Z'
-}
-{
-  message: 'An error has occurred when sending a SMS: cesar_b_03@outlook.com',
-  level: 'error',
-  timestamp: '2022-10-14T18:21:06.538Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:16:31.854Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:16:31.859Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:16:31.899Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:21:32.816Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:21:32.820Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:21:32.835Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:22:57.847Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:22:57.851Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:22:57.854Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:27:26.154Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:27:26.173Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:27:26.180Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:28:09.706Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:28:09.740Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:28:09.747Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:31:34.136Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:31:34.141Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:31:34.153Z'
-}
-{
-  message: 'Error in getById method: CastError: Cast to ObjectId failed for value "NaN" (type number) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-18T19:31:53.068Z'
-}
-{
-  message: 'An error has ocurred when starting: Error: listen EADDRINUSE: address already in use :::8080',
-  level: 'error',
-  timestamp: '2022-10-19T15:12:22.092Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:40:56.535Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:40:56.538Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:42:10.423Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "633128b09388267afe27bb8" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:42:10.426Z'
-}
-{
-  message: 'MongoAtlas updateProductById method error: CastError: Cast to ObjectId failed for value "63323e2d78d8ebad08060f" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:51:31.781Z'
-}
-{
-  message: 'MongoAtlas deleteProductById method error: CastError: Cast to ObjectId failed for value "63323e2d78d8ebad08060f" (type string) at path "_id" for model "products"',
-  level: 'error',
-  timestamp: '2022-10-19T20:51:31.796Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`djfh`) is shorter than the minimum allowed length (8).',
-  level: 'error',
-  timestamp: '2022-10-19T21:59:11.072Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`djfh`) is shorter than the minimum allowed length (8).',
-  level: 'error',
-  timestamp: '2022-10-19T22:00:43.496Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: name: Path `name` is required., photoURL: Path `photoURL` (`"djfh"`) is shorter than the minimum allowed length (8).',
-  level: 'error',
-  timestamp: '2022-10-19T22:01:14.692Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: name: Path `name` is required.',
-  level: 'error',
-  timestamp: '2022-10-19T22:03:04.165Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
-  level: 'error',
-  timestamp: '2022-10-19T22:06:19.575Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
-  level: 'error',
-  timestamp: '2022-10-19T22:23:10.090Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required., price: Path `price` is required., name: Path `name` is required.',
-  level: 'error',
-  timestamp: '2022-10-20T15:35:47.062Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required., price: Path `price` is required., name: Path `name` is required.',
-  level: 'error',
-  timestamp: '2022-10-20T15:39:09.960Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
-  level: 'error',
-  timestamp: '2022-10-20T15:41:06.529Z'
-}
-{
-  message: 'Error in addProduct method: ValidationError: photoURL: Path `photoURL` is required.',
-  level: 'error',
-  timestamp: '2022-10-21T18:56:51.696Z'
+  timestamp: '2022-11-15T20:40:31.282Z'
 }

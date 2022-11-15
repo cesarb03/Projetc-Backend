@@ -7,13 +7,13 @@ import Logger from '../../utils/logger';
 
 export const sessionSignup = Router();
 
-sessionSignup.get('/', SessionController.renderSignUp);
 sessionSignup.post(
   '/',
   passport.authenticate('signup', { failureRedirect: '/signup/failed', failureFlash: true }),
-  SessionController.signUp
+  async (req, res) => {
+    res.status(200).json({ message: 'User registered' });
+  }
 );
-sessionSignup.get('/upload', SessionController.renderUpload);
 sessionSignup.post(
   '/upload',
   upload.single('picture'),
@@ -49,5 +49,4 @@ sessionSignup.post(
   },
   SessionController.uploadSuccess
 );
-
-sessionSignup.get('/failed', SessionController.renderFailedSignup);
+sessionSignup.get('/failed', SessionController.failedSignup);

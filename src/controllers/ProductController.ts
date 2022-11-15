@@ -8,8 +8,7 @@ class ProductController {
   async getAll(req: Request, res: Response) {
     try {
       const products = await ProductService.getAll();
-      return res.status(200).json({ products: products });
-      // return products
+      return res.status(200).json({ products });
     } catch (error) {
       Logger.error(`Error in getAll method: ${error}`);
     }
@@ -23,7 +22,20 @@ class ProductController {
       if (product === undefined || product === null)
         return res.status(404).json({ error: 'Cannot find requested product' });
 
-      return res.status(200).json({ product: product });
+      return res.status(200).json({ Product: product });
+    } catch (error) {
+      Logger.error(`Error in getById method: ${error}`);
+      return res.status(500).json({ error: 'An error has occurred.' });
+    }
+  }
+
+  async getProductByCategory(req: Request, res: Response) {
+    try {
+      const { category } = req.params;
+      const filteredProducts = await ProductService.getProductByCategory(category);
+      if (filteredProducts === undefined || filteredProducts === null || filteredProducts.length === 0)
+        return res.status(404).json({ error: `Cannot find products belonging to ${category} category` });
+      return res.status(200).json({ ProductsByCategories: filteredProducts });
     } catch (error) {
       Logger.error(`Error in getById method: ${error}`);
       return res.status(500).json({ error: 'An error has occurred.' });
@@ -33,12 +45,6 @@ class ProductController {
   async addProduct(req: Request, res: Response) {
     try {
       const product = req.body;
-
-      const { price, photoURL, stock } = product;
-      if (photoURL instanceof String) return res.status(404).json({ error: 'photoURL must be type String.' });
-      if (price instanceof Number) return res.status(404).json({ error: 'price must be type Number.' });
-      if (stock instanceof Number) return res.status(404).json({ error: 'stock must be type Number.' });
-
       await ProductService.addProduct(product);
       return res.status(200).json({ ProductAdded: product });
     } catch (error) {

@@ -1,14 +1,12 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import { config } from '../db/config';
 import Logger from './logger';
-
-dotenv.config();
 
 const gmailtransporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.GMAIL_MAIL,
-    pass: process.env.GMAIL_PROVISIONAL_PASS,
+    user: config.GMAIL_USER,
+    pass: config.GMAIL_PASS,
   },
 });
 
@@ -22,7 +20,7 @@ class MailSender {
     try {
       await this.transporter.sendMail({
         from: 'E-commerce CB',
-        to: process.env.GMAIL_MAIL,
+        to: config.GMAIL_USER,
         subject: `New registered user`,
         html: ` <p>Name: ${user.name}</p> 
                         <p>Email: ${user.email}</p>
@@ -40,7 +38,7 @@ class MailSender {
     try {
       await this.transporter.sendMail({
         from: 'E-commerce CB',
-        to: process.env.GMAIL_MAIL,
+        to: config.GMAIL_USER,
         subject: `New order from ${user.name}`,
         html: `
                         <h2> User: </h2>

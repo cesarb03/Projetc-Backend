@@ -6,5 +6,6 @@ export interface User {
   age: number;
   phoneNumber: string;
   picture: string;
+  isAdmin: boolean;
   comparePassword(reqPassword: string, password: string): Promise<boolean>;
 }

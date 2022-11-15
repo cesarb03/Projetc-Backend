@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     age: { type: Number, required: true },
     phoneNumber: { type: String, required: true },
     picture: { type: String, required: false },
-    isAdmin: { type: String, required: true, default: false },
+    isAdmin: { type: Boolean, required: true, default: false },
   },
   { collection: 'users' }
 );
@@ -33,9 +33,8 @@ userSchema.pre('save', async function (next) {
 userSchema.post('save', async function (res: any, next: NextFunction) {
   try {
     const user = { id: this.id, email: this.email };
-    await CartController.cartCreate(user);
-    next();
-  } catch (err: any) {
+    await CartController.cartCreate(user, res);
+  } catch (err) {
     next(err);
   }
 });
