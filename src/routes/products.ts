@@ -1,6 +1,7 @@
 import { Router } from 'express';
-export const productsRouter = Router();
 import { ProductController } from '../controllers';
+
+const productsRouter = Router();
 
 // Vinculo los endpoints con sus respectivos controllers.
 productsRouter.route('/products').get(ProductController.getAll).post(ProductController.addProduct);

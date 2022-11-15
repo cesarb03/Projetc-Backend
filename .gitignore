@@ -1,8 +1,8 @@
+#Ignorar arvhivos
+
+.env
+
 #Ignorar carpetas
 
 node_modules
 dist
-
-#Ignorar arvhivos
-
-.env

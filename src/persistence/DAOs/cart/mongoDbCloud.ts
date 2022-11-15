@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import cartModel from '../../../models/schemas/cartSchema';
+import mongoConnection from '../../mongoDB/connection';
 import CartDTO from '../../DTOs/cartDTO';
 import Logger from '../../../utils/logger';
 
@@ -11,6 +12,7 @@ class CartMongoDAO {
   constructor(cartModel: mongoose.Model<any, {}, {}, {}>, DTO: CartDTO) {
     this.model = cartModel;
     this.DTO = DTO;
+    mongoConnection();
   }
 
   static getInstance(cartModel: mongoose.Model<any, {}, {}, {}>, DTO: any) {
@@ -61,14 +63,13 @@ class CartMongoDAO {
   }
 
   async addProductsById(user: any, prod_id: any, quantity: any) {
-    // const cart: any = await this.model.findOne().populate({ path: 'user.id' });
     const cart: any = await this.model.findOne({ user_id: user.id });
 
     if (cart === null) {
       Logger.error(`Cart not found in addProductsById method.`);
     } else {
       // checks if products already exists in cart
-      let prodExistence = await this.model.aggregate([
+      const prodExistence = await this.model.aggregate([
         { $match: { 'products.prod_id': prod_id } },
         {
           $project: {
@@ -143,15 +144,15 @@ class CartMongoDAO {
         { _id: cart._id },
         {
           $pull: {
-            products: { id: prod_id },
+            products: { prod_id: prod_id },
           },
         }
       );
       if (deleteCartProduct.modifiedCount === 0) {
         Logger.error('Product not deleted from cart');
       } else {
-        Logger.info('Product deleted from cart');
-        return prod_id;
+        const updatedCart: any = await this.model.findOne({ user_id: user.id });
+        return new this.DTO(updatedCart).toJson();
       }
     }
   }

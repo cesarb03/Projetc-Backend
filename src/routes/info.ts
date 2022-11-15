@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { renderInfo } from '../controllers';
 
-export const infoRouter = Router();
+const infoRouter = Router();
 
 infoRouter.route('/').get(renderInfo);
 

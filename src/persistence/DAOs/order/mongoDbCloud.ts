@@ -1,62 +1,72 @@
-import cartSchema from '../../../models/schemas/cartSchema';
 import orderSchema from '../../../models/schemas/orderSchema';
 import mongoose from 'mongoose';
 import mongoConnection from '../../mongoDB/connection';
 import Logger from '../../../utils/logger';
 import OrderDTO from '../../DTOs/OrderDTO';
+import IOrderDAO from './IOrderDAO';
+import { CartService, ProductService } from '../../../services';
+import MailSender from '../../../utils/nodemailer';
+import MessageService from '../../../utils/messaging';
 
-class OrderMongoDAO {
-  cartModel: mongoose.Model<any, {}, {}, {}>;
+class OrderMongoDAO extends IOrderDAO {
   orderModel: mongoose.Model<any, {}, {}, {}>;
   DTO: any;
+  static instance: OrderMongoDAO;
 
-  constructor(cart: mongoose.Model<any, {}, {}, {}>, order: mongoose.Model<any, {}, {}, {}>, DTO: any) {
-    this.cartModel = cart;
+  constructor(order: mongoose.Model<any, {}, {}, {}>, DTO: any) {
+    super();
     this.orderModel = order;
     this.DTO = DTO;
     mongoConnection();
   }
 
+  static getInstance(orderModel: mongoose.Model<any, {}, {}, {}>, DTO: any) {
+    if (!this.instance) {
+      this.instance = new OrderMongoDAO(orderModel, DTO);
+    }
+    return this.instance;
+  }
+
   public async createOrder(user: any): Promise<any[] | any> {
-    if (!mongoose.isValidObjectId(user.id)) return undefined;
-
     try {
-      const cartProducts = await this.cartModel
-        .find({ user: user.id })
-        .populate({ path: 'products', select: '_id title description code thumbnail price' })
-        .exec();
+      const cartProducts = await CartService.getProductsByCartId(user);
 
-      Logger.info(`cartProducts, ${cartProducts}`);
+      if (cartProducts.length == 0) return { error: 'There is not products in Cart' };
 
-      if (cartProducts.length == 0) throw new Error('There is not products in the cart.');
-
-      const products = cartProducts.map((cartProd) => {
-        return {
-          ...cartProd.product,
-          quantity: cartProd.quantity,
-        };
-      });
-
-      Logger.info(`products, ${products}`);
+      const orderProducts = await Promise.all(
+        cartProducts.map(async (cartProduct: any) => {
+          const { name, price, description, photoURL } = await ProductService.getById(cartProduct.prod_id);
+          const orderProduct = {
+            name,
+            price,
+            description,
+            photoURL,
+            quantity: cartProduct.quantity,
+          };
+          return { ...orderProduct };
+        })
+      );
 
       const newOrder = await this.orderModel.create({
-        user: user.id,
-        products: products,
-        number: await this.orderModel.countDocuments({}),
+        user: user.email,
+        products: orderProducts,
+        status: 'generated',
       });
 
-      Logger.info(`newOrder, ${newOrder}`);
+      // eMail to Admin
+      await MailSender.newOrder(user, orderProducts);
+      // SMS to user
+      await MessageService.newSMS(user);
 
-      //await this.cartModel.deleteMany({ user: user.id })
+      // Empty cart products
+      await CartService.deleteProductByCartId(user);
 
-      const data: any = new this.DTO(newOrder).toJson();
-
-      Logger.info(`data, ${data}`);
+      const data = new this.DTO(newOrder).toJson();
       return data;
     } catch (err) {
-      Logger.error(`MongoAtlas getAll method error: ${err}`);
+      Logger.error(`MongoAtlas createOrder method error: ${err}`);
     }
   }
 }
 
-export default new OrderMongoDAO(cartSchema, orderSchema, OrderDTO);
+export default OrderMongoDAO.getInstance(orderSchema, OrderDTO);

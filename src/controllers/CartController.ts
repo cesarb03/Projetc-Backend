@@ -11,7 +11,8 @@ class CartController {
   async cartCreate(user: any, res: Response) {
     try {
       await CartService.createNewCart(user);
-      return res.status(200).json({ message: 'Cart Created' });
+      Logger.info('Cart Created');
+      // return res.status(200).json({ message: 'Cart Created' });
     } catch (error) {
       Logger.error(`Error in createNewCart method: ${error}`);
     }
