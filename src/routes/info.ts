@@ -3,6 +3,6 @@ import { renderInfo } from '../controllers';
 
 const infoRouter = Router();
 
-infoRouter.route('/').get(renderInfo);
+infoRouter.route('/info').get(renderInfo);
 
 export default infoRouter;

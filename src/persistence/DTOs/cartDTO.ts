@@ -16,7 +16,7 @@ class CartDTO {
   getId() {
     return this.id;
   }
-  getProduct() {
+  getProducts() {
     return this.products;
   }
   getUserId() {

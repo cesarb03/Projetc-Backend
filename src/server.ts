@@ -11,6 +11,9 @@ import Logger from './utils/logger';
 import passport from 'passport';
 import { passportLoad } from './utils/passport';
 import flash from 'connect-flash';
+// Middlewares
+import errorHandler from './middlewares/errorHandler';
+import wrongRoute from './middlewares/wrongRoute';
 
 declare module 'express-session' {
   export interface SessionData {
@@ -45,6 +48,7 @@ if (process.argv[3] === 'cluster' && cluster.isPrimary) {
 }
 
 // MIDDLEWARES
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -78,3 +82,9 @@ passportLoad(passport);
 
 // ROUTES
 app.use('/', indexRouter);
+
+// EXTRA ERRORs HANDLER
+app.use(errorHandler);
+
+// WRONG ROUTE
+app.use(wrongRoute);

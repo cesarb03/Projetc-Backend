@@ -5,7 +5,7 @@ class SessionController {
   constructor() {}
 
   // LOGIN
-  async login(req: Request, res: Response ) {
+  async login(req: Request, res: Response) {
     try {
       if (req.isAuthenticated()) res.status(200).json({ message: 'user logged' });
     } catch (err) {

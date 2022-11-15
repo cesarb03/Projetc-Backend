@@ -4,5 +4,6 @@ export interface product {
   description: string;
   photoURL: string;
   stock: number;
+  category: string;
   timestamp: string;
 }

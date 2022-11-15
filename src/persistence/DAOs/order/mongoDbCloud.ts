@@ -59,7 +59,7 @@ class OrderMongoDAO extends IOrderDAO {
       await MessageService.newSMS(user);
 
       // Empty cart products
-      await CartService.deleteProductByCartId(user);
+      await CartService.cartDeleteById(user);
 
       const data = new this.DTO(newOrder).toJson();
       return data;

@@ -24,8 +24,8 @@ class CartService {
     return await this.model.addProductsById(user, prod_id, quantity);
   }
 
-  async deleteProductByCartId(user: any, product: any) {
-    return await this.model.deleteProductByCartId(user, product);
+  async deleteProductByCartId(user: any, prod_id: any) {
+    return await this.model.deleteProductByCartId(user, prod_id);
   }
 }
 
