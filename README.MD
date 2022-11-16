@@ -96,8 +96,8 @@ API probada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-coll
  - **Bcrypt** : encriptador de contraseñas
  - **Socket.io**: permite una comunicación bidireccional (front - back) en tiempo real basada en eventos
  - **Express-session**: Express-session es utilizada para crear las sessions de los usuarios.
- - **passport & passport-local**: passport se ocupa de autenticar el registro y el ingreso de usuarios, mientras que passport-local es la estrategia de autenticación
- - **twilio**: es utilizado para enviar notificaciones como Nodemailer, solo que mediante mensajes de Whatsapp
+ - **Passport & passport-local**: passport se ocupa de autenticar el registro y el ingreso de usuarios, mientras que passport-local es la estrategia de autenticación
+ - **Twilio**: es utilizado para enviar notificaciones como Nodemailer, solo que mediante mensajes de Whatsapp
  - **Socket.io**: permite una comunicación bidireccional (front - back) en tiempo real basada en eventos
 
 
