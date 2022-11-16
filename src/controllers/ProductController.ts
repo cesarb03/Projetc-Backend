@@ -18,10 +18,8 @@ class ProductController {
     try {
       const { id } = req.params;
       const product = await ProductService.getById(id);
-
       if (product === undefined || product === null)
         return res.status(404).json({ error: 'Cannot find requested product' });
-
       return res.status(200).json({ Product: product });
     } catch (error) {
       Logger.error(`Error in getById method: ${error}`);
@@ -57,12 +55,9 @@ class ProductController {
     try {
       const { id } = req.params;
       const product = req.body;
-
       const productUpdated = await ProductService.updateProductById(id, product);
-
       if (productUpdated === undefined || productUpdated === null)
         return res.status(404).json({ error: 'Cannot find requested product' });
-
       return res.status(200).json({ ProductUpdated: productUpdated });
     } catch (error) {
       Logger.error(`Error in updateProductById method: ${error}`);
@@ -74,10 +69,8 @@ class ProductController {
     try {
       const { id } = req.params;
       const deletedProduct = await ProductService.deleteProductById(id);
-
       if (deletedProduct === undefined || deletedProduct === null)
         return res.status(404).json({ error: 'Cannot find requested product' });
-
       return res.status(200).json({ ProductDeleted: deletedProduct });
     } catch (error) {
       Logger.error(`Error in deleteProductById method: ${error}`);

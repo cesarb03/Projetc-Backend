@@ -22,9 +22,8 @@ API provada a través de POSTMAN <br>
 | DELETE    | **/api/cart/:pord_id**        | Permite eliminar un producto del carrito por su ID / Se necesita loguearse |
 | POST    | **/api/order**        | Permite generar una orden de compra respecto al carrito correspondiente al user logueado |
 | GET   | **/api/info**        | Se renderiza a través de el motor de plantillas Ejs una vista con datos del servidor |
-| GET   | **/api/info**        | Se renderiza a través de el motor de plantillas Ejs una vista con datos del servidor |
-| GET   | **/api/chat**        | Se renderiza a través de el motor de plantillas Hubs un chat online |
-
+| GET   | **/api/chat**        | Se renderiza a través de el motor de plantillas Ejs un chat online |
+| POST   | **/signup/upload**        | Se renderiza a través de el motor de plantillas Ejs una vista para cargar el avatar |
 
 
 ### Link de Heroku

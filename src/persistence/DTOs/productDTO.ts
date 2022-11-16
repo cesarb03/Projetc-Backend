@@ -19,38 +19,6 @@ class ProductDTO {
     this.timestamp = product.timestamp;
   }
 
-  getId() {
-    return this.id;
-  }
-
-  getName() {
-    return this.name;
-  }
-
-  getPrice() {
-    return this.price;
-  }
-
-  getDescription() {
-    return this.description;
-  }
-
-  getPhotoURL() {
-    return this.photoURL;
-  }
-
-  getStock() {
-    return this.stock;
-  }
-
-  getCategory() {
-    return this.category;
-  }
-
-  getTimestamp() {
-    return this.timestamp;
-  }
-
   toJson() {
     const prodDisplayed = {
       id: this.id,

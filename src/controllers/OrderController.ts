@@ -9,10 +9,9 @@ class OrderController {
     try {
       const user = req.user;
       const order = await OrderService.createOrder(user);
-
       return res.status(200).json({ Order: order });
-    } catch (err) {
-      Logger.error(`Error in createOrder method, Order Controller: ${err}`);
+    } catch (error) {
+      Logger.error(`Error in createOrder method, Order Controller: ${error}`);
     }
   }
 }

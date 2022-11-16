@@ -7,6 +7,8 @@ import MongoStore from 'connect-mongo';
 import path from 'path';
 import cluster from 'cluster';
 import os from 'os';
+// Socket
+import { Server as IOServer } from 'socket.io';
 import Logger from './utils/logger';
 import passport from 'passport';
 import { passportLoad } from './utils/passport';
@@ -14,6 +16,7 @@ import flash from 'connect-flash';
 // Middlewares
 import errorHandler from './middlewares/errorHandler';
 import wrongRoute from './middlewares/wrongRoute';
+import ChatService from './services/ChatService';
 
 declare module 'express-session' {
   export interface SessionData {
@@ -40,12 +43,12 @@ if (process.argv[3] === 'cluster' && cluster.isPrimary) {
     console.log(`Worker ${worker.process.pid} died`);
     cluster.fork();
   });
-} else {
-  const serverExpress = app.listen(process.env.PORT || 8080, () => {
-    Logger.info(`Server listening on port ${port}.`);
-  });
-  serverExpress.on('error', (err) => Logger.error(`An error has ocurred when starting: ${err}`));
 }
+
+const serverExpress = app.listen(process.env.PORT || 8080, () => {
+  Logger.info(`Server listening on port ${port}.`);
+});
+serverExpress.on('error', (err) => Logger.error(`An error has ocurred when starting: ${err}`));
 
 // MIDDLEWARES
 app.use(express.static(path.join(__dirname, '../public')));
@@ -82,6 +85,31 @@ passportLoad(passport);
 
 // ROUTES
 app.use('/', indexRouter);
+
+//SOCKET
+const io = new IOServer(serverExpress);
+
+io.on('connection', async (socket) => {
+  Logger.info(`New user connected: ${socket.id}`);
+  let messagesArray = await ChatService.getMessages();
+
+  socket.emit('server:message', messagesArray);
+
+  try {
+    socket.on('client:message', async (newMessage) => {
+      try {
+        await ChatService.addMessage(newMessage);
+        messagesArray = await ChatService.getMessages();
+      } catch (err) {
+        Logger.error(`Error in addMessage socket method: ${err}`);
+      }
+
+      io.emit('server:message', messagesArray);
+    });
+  } catch (err) {
+    Logger.error(`Error at receiving client:message socket method: ${err}`);
+  }
+});
 
 // EXTRA ERRORs HANDLER
 app.use(errorHandler);

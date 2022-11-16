@@ -31,3 +31,23 @@
   level: 'error',
   timestamp: '2022-11-15T20:40:31.282Z'
 }
+{
+  message: 'An error has occured: Failed to lookup view "Photo uploaded" in views directory "C:\\Users\\Cesar\\Downloads\\BackEnd Dev\\Projetc - Backend\\src\\views"',
+  level: 'error',
+  timestamp: '2022-11-16T14:24:47.403Z'
+}
+{
+  message: 'An error has occured: Failed to lookup view "Photo uploaded" in views directory "C:\\Users\\Cesar\\Downloads\\BackEnd Dev\\Projetc - Backend\\src\\views"',
+  level: 'error',
+  timestamp: '2022-11-16T14:25:18.348Z'
+}
+{
+  message: 'An error has occured: Failed to lookup view "Photo uploaded" in views directory "C:\\Users\\Cesar\\Downloads\\BackEnd Dev\\Projetc - Backend\\src\\views"',
+  level: 'error',
+  timestamp: '2022-11-16T14:34:23.778Z'
+}
+{
+  message: 'An error has occured: Failed to lookup view "Photo uploaded" in views directory "C:\\Users\\Cesar\\Downloads\\BackEnd Dev\\Projetc - Backend\\src\\views"',
+  level: 'error',
+  timestamp: '2022-11-16T15:46:23.984Z'
+}

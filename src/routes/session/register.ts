@@ -3,7 +3,7 @@ import passport from 'passport';
 import user from '../../models/schemas/userSchema';
 import { SessionController } from '../../controllers';
 import { upload } from '../../utils/multer';
-import Logger from '../../utils/logger';
+import MailSender from '../../utils/nodemailer';
 
 export const sessionSignup = Router();
 
@@ -11,9 +11,13 @@ sessionSignup.post(
   '/',
   passport.authenticate('signup', { failureRedirect: '/signup/failed', failureFlash: true }),
   async (req, res) => {
+    const user = req.user;
     res.status(200).json({ message: 'User registered' });
+    MailSender.newRegister(user);
   }
 );
+
+sessionSignup.get('/upload', SessionController.renderUpload);
 sessionSignup.post(
   '/upload',
   upload.single('picture'),
@@ -41,8 +45,8 @@ sessionSignup.post(
         const error = { message: 'User not found', statusCode: 400 };
         return next(error);
       }
-    } catch (err) {
-      Logger.error(`Error trying to update users avatar: ${err}`);
+    } catch (error) {
+      console.log('Method update: ', error);
     }
 
     next();

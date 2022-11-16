@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Logger from '../utils/logger';
+import MailSender from '../utils/nodemailer';
 
 class SessionController {
   constructor() {}
@@ -22,7 +23,6 @@ class SessionController {
   async logout(req: Request, res: Response) {
     try {
       if (req.isAuthenticated()) {
-        const user = req.user;
         req.session.destroy(() => {
           res.status(201).json({ message: 'user logged out' });
         });
@@ -46,9 +46,18 @@ class SessionController {
     res.status(409).json({ error: req.flash('error')[0] });
   }
 
+  // UPLOAD
+  async renderUpload(req: Request, res: Response) {
+    try {
+      res.render('upload');
+    } catch (error) {
+      Logger.error(`Error in renderUpload method in SessionControllers, ${error}`);
+    }
+  }
+
   // UPLOAD SUCCESS
   async uploadSuccess(req: Request, res: Response) {
-    res.status(201).render('Photo uploaded');
+    res.status(201).json({ success: 'Photo uploaded' });
   }
 }
 

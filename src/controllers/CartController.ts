@@ -12,7 +12,6 @@ class CartController {
     try {
       await CartService.createNewCart(user);
       Logger.info('Cart Created');
-      // return res.status(200).json({ message: 'Cart Created' });
     } catch (error) {
       Logger.error(`Error in createNewCart method: ${error}`);
     }
@@ -54,7 +53,6 @@ class CartController {
     try {
       const user = req.user;
       const { prod_id } = req.params;
-
       const productDeleted = await CartService.deleteProductByCartId(user, prod_id);
       return res.status(200).json({ Cart: productDeleted });
     } catch (error) {
@@ -66,7 +64,7 @@ class CartController {
     try {
       const user = req.user;
       const cartProducts = await CartService.getProductsByCartId(user);
-      // await cartDao.cartDeleteById(user);
+      await CartService.cartDeleteById(user);
       MailSender.newOrder(user, cartProducts);
       MessageService.newSMS(user);
       MessageService.newWhatsapp(user);

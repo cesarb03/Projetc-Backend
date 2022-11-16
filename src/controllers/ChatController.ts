@@ -1,33 +1,12 @@
 import { Request, Response } from 'express';
 import Logger from '../utils/logger';
-import ChatService from '../services/ChatService';
 
 class ChatController {
-  async renderChat(req: Request, res: Response) {
+  async renderChatForm(req: Request, res: Response) {
     try {
-      const user = req.user;
-      // const messages = await ChatService.getMessages()
-      // res.render('chat', {messages, user})
+      res.status(200).render('home');
     } catch (error) {
-      Logger.error(`Error in Chat method: ${error}`);
-    }
-  }
-
-  async addMessage(req: Request, res: Response) {
-    try {
-      const user: any = req.user;
-      const newMessage = req.body;
-
-      if (user.isAdmin) {
-        const { chat_user } = req.params;
-        const sender = 'admin';
-        await ChatService.addMessage(chat_user, newMessage, sender);
-      }
-      const sender = 'user';
-      await ChatService.addMessage(user, newMessage, sender);
-      return;
-    } catch (error) {
-      Logger.error(`Error in Chat method: ${error}`);
+      Logger.error(`Error in renderChatForm method, chatController: ${error}`);
     }
   }
 }
