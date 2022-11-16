@@ -61,7 +61,7 @@ GMAIL_PASS= (App password del email emisor)
 
 
 # **Consejos**
-API provada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-collection.json)**
+API probada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-collection.json)**
 
 # **Rutas**
 
