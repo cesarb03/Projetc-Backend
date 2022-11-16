@@ -8,7 +8,7 @@
 
 * Consigna del proyecto **[acá](https://docs.google.com/document/d/18M1SiOzBXwQgkPwz7NUYcnRqFgwsNogt8o7AKtU1Ybc/edit)**.
 
-* Podés visitar la pagina del **deploy** **[acá](https://entrega-final-backend.herokuapp.com/)**.
+* Podés ver el **deploy** **[acá](https://entrega-final-backend.herokuapp.com/)**.
 
 * La entrega final del curso de **Back End** de [CoderHouse](https://www.coderhouse.com/) consiste en funcionalidades de un e-commerce basado en [node](http://nodejs.org) y [express](https://www.npmjs.com/package/express).
 
@@ -24,11 +24,11 @@ En la consola del proyecto: `npm install`
 
 # **Scripts**
 
-Iniciar el transpilador TSC de Typestript:
-`npm run build`
-Iniciar la app con node:
-`npm start`
-Iniciar la app con nodemon:
+Iniciar el transpilador TSC de Typestript:<br>
+`npm run build`<br>
+Iniciar la app con node:<br>
+`npm start`<br>
+Iniciar la app con nodemon:<br>
 `npm run start:dev`
 
 # **Variables de entorno**
