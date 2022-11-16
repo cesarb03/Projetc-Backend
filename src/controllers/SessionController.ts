@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import Logger from '../utils/logger';
-import MailSender from '../utils/nodemailer';
 
 class SessionController {
   constructor() {}
