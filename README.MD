@@ -1,9 +1,69 @@
-# PROYECTO FINAL BACKEND CODERHOUSE
-## Consejos
-API provada a través de POSTMAN <br>
+![NODE](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![EXPRESS](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MONGO](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![TWILIO](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=Twilio&logoColor=white)
+![BOOTSTRAP](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+# **ENTREGA FINAL**
+
+* Consigna del proyecto **[acá](https://docs.google.com/document/d/18M1SiOzBXwQgkPwz7NUYcnRqFgwsNogt8o7AKtU1Ybc/edit)**.
+
+* Podés visitar la pagina del **deploy** **[acá](https://entrega-final-backend.herokuapp.com/)**.
+
+* La entrega final del curso de **Back End** de [CoderHouse](https://www.coderhouse.com/) consiste en funcionalidades de un e-commerce basado en [node](http://nodejs.org) y [express](https://www.npmjs.com/package/express).
+
+# **Instalación**
+
+## 1- Clona este repositorio
+
+En la consola de **Git**: `git clone https://github.com/cesarb03/Projetc-Backend.git`
+
+## 2- Instala las dependencias
+
+En la consola del proyecto: `npm install`
+
+# **Scripts**
+
+Iniciar el transpilador TSC de Typestript:
+`npm run build`
+Iniciar la app con node:
+`npm start`
+Iniciar la app con nodemon:
+`npm run start:dev`
+
+# **Variables de entorno**
+
+(Archivo .env)
+
+```
+(Server Settings)
+ENVIRONMENT_MODE=development
+PORT=8080 (puerto)
+PERSISTENCE=1 (solo trabajé con MONGODB)
+
+(Mongo DB Settings)
+SECRET_KEY= (clave de sesión)
+MONGODB= (link de base de datos en Mongo Atlas entre ``)
+SESSION_TIME=600000 (tiempo de duración de la sesión)
+
+(Twilio Settings)
+TWILIO_ACCOUNT_SID= (Account sid de Twilio)
+TWILIO_AUTH_TOKEN= (Auth token de Twilio)
+TWILIO_NUMBER= (Numero de telefono de Twilio)
+TWILIO_WHATSAPP= (Numero de telefono de Twilio)
+TWILIO_ADMIN_NUMBER= (Numero de telefono Nuestro)
+
+(Nodemailer Settings)
+GMAIL_USER= (direccion email emisor para nodemailer)
+GMAIL_PASS= (App password del email emisor)
+
+```
 
 
-## Rutas
+# **Consejos**
+API provada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-collection.json)**
+
+# **Rutas**
 
 | Método | Endpoint                | Descripción                                                                                                                                                                                                                 |
 | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,21 +86,30 @@ API provada a través de POSTMAN <br>
 | POST   | **/signup/upload**        | Se renderiza a través de el motor de plantillas Ejs una vista para cargar el avatar |
 
 
-### Link de Heroku
+# **Utilización de dependencias**
+ - **Express** : web application framework
+ - **MongoDB** : Database
+ - **Mongoose** biblioteca que crea una conexión entre MongoDB y Express
+ - **Nodemailer**: es utilizado para mandar notificaciones a emails
+ - **EJS**: motor de plantillas para renderizar las vistas de Login, Logout, Signout, info y Chat
+ - **Bcrypt** : encriptador de contraseñas
+ - **Socket.io**: permite una comunicación bidireccional (front - back) en tiempo real basada en eventos
+ - **Express-session**: Express-session es utilizada para crear las sessions de los usuarios.
+ - **passport & passport-local**: passport se ocupa de autenticar el registro y el ingreso de usuarios, mientras que passport-local es la estrategia de autenticación
+ - **twilio**: es utilizado para enviar notificaciones como Nodemailer, solo que mediante mensajes de Whatsapp
+ - **Socket.io**: permite una comunicación bidireccional (front - back) en tiempo real basada en eventos
 
-**Deploy:**
- 
 
-## Academy
+# **Academia**
 > [CODERHOUSE](https://www.coderhouse.com/)
 
-## Course
+# **Curso**
 > [Back-End Node Js](https://www.coderhouse.com/online/programacion-backend)
 
-## Teach & tutor
+# **Profesor y tutor**
 > <p>Comisión: 31005.</p>
 > <p>Teach: Salvador Perez</p>
 > <p>Tutor: Alejandro Aliaga.</p> 
 
-## Author
+# **Author**
 > <p>César Bergamasco. </p>
