@@ -8,7 +8,7 @@
 
 * Consigna del proyecto **[acá](https://docs.google.com/document/d/18M1SiOzBXwQgkPwz7NUYcnRqFgwsNogt8o7AKtU1Ybc/edit)**.
 
-* Podés ver el **deploy** **[acá](https://entrega-final-backend.herokuapp.com/)**.
+* Podés ver el **deploy** **[acá](https://projetc-backend-production.up.railway.app/api/info)**.
 
 * La entrega final del curso de **Back End** de [CoderHouse](https://www.coderhouse.com/) consiste en funcionalidades de un e-commerce basado en [node](http://nodejs.org) y [express](https://www.npmjs.com/package/express).
 
@@ -89,6 +89,7 @@ API provada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-coll
 # **Utilización de dependencias**
  - **Express** : web application framework
  - **MongoDB** : Database
+ - **Typescript** : es el lenguaje en el que fue escrito el código de esta API
  - **Mongoose** biblioteca que crea una conexión entre MongoDB y Express
  - **Nodemailer**: es utilizado para mandar notificaciones a emails
  - **EJS**: motor de plantillas para renderizar las vistas de Login, Logout, Signout, info y Chat
@@ -111,5 +112,5 @@ API provada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-coll
 > <p>Teach: Salvador Perez</p>
 > <p>Tutor: Alejandro Aliaga.</p> 
 
-# **Author**
+# **Autor**
 > <p>César Bergamasco. </p>
