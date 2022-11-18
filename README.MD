@@ -1,9 +1,12 @@
+---
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![NODE](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![EXPRESS](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 ![MONGO](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
 ![TWILIO](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=Twilio&logoColor=white)
 ![BOOTSTRAP](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
-
+---
 # **ENTREGA FINAL**
 
 * Consigna del proyecto **[acá](https://docs.google.com/document/d/18M1SiOzBXwQgkPwz7NUYcnRqFgwsNogt8o7AKtU1Ybc/edit)**.
@@ -70,11 +73,11 @@ API probada a través de POSTMAN **[Archivo Postman](./Postman-EntregaFinal-coll
 | POST    | **/login**     | Inicio de sesion de usuarios se les dara un Token para que puedan Acceder a las demas rutas |
 | POST    | **/signup**     | Registro de usuarios se alamacena en MongoDB y se le asigna un cart al nuevo user|
 | POST    | **/logout**     | Se desloguea el usuario |
-| GET    | **/api/productos**     | Me permite listar todos los productos disponibles |
-| POST   | **/api/productos**     | Para incorporar productos al listado / Se necesita estar logueado |
-| GET    | **/api/productos/:id** | Permite ver un producto especifico dando en ID / Se necesita loguearse |
-| PUT    | **/api/productos/:id**     | Permite Editar el producto Seleccionado por ID / Se necesita loguearse  |
-| DELETE    | **/api/productos/:id**     | Permite Eliminar un Producto seleccionado por ID / Se necesita loguearse |
+| GET    | **/api/products**     | Me permite listar todos los productos disponibles |
+| POST   | **/api/products**     | Para incorporar productos al listado / Se necesita estar logueado |
+| GET    | **/api/products/:id** | Permite ver un producto especifico dando en ID / Se necesita loguearse |
+| PUT    | **/api/products/:id**     | Permite Editar el producto Seleccionado por ID / Se necesita loguearse  |
+| DELETE    | **/api/products/:id**     | Permite Eliminar un Producto seleccionado por ID / Se necesita loguearse |
 | GET    | **/api/categories/:categories** | Permite filtrar productos por categoría |
 | GET    | **/api/cart**     | Permite ver el carrito y sus productos en el caso que tenga |
 | DELETE    | **/api/cart**     | Permite eliminar todos los productos que estan cargados en el carrito / Se necesita loguearse |
